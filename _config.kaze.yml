@@ -3,7 +3,7 @@
 title: 小狼的小窝
 author: 小狼
 # put the logo on the ${blog_path}/source/img/${picname}.png or use urls
-logo_img: https://img.songhn.com/img/Y67gdd.png
+logo_img: /img/github.png
 author_img: /img/avatar.jpg
 author_description: 只消闲处遇平生
 language: zh-CN
@@ -20,18 +20,26 @@ menus:
   # artitalk: /shuoshuo # You can uncomment to add this route
 
 about:
-  description: description
+  description: Ta还有好几个小窝
   social_links:
-    # - { icon: icon, link: your link }
+    - { icon: '/img/github.png', link: 'https://github.com/Wolf1024Hzx' }
 
 #------------------------
 # Links
 #------------------------
 links:
-  # name:
-  #   url: https://example.com
-  #   avatar:
-  #   description:
+  Mittronus:
+    url: https://github.com/Mittronus
+    avatar: https://avatars.githubusercontent.com/u/102714810?v=4
+    description: 小狼的Ta
+  ItBlock:
+    url: https://github.com/ITBock
+    avatar: https://avatars.githubusercontent.com/u/91658911?v=4
+    description: 爱方块的玩
+  muzhiLL:
+    url: https://github.com/muzhiLL
+    avatar: https://avatars.githubusercontent.com/u/113877100?v=4
+    description: 枝木
   #------------------------
   # tip: if you want to use QQ avatar without giving away your QQ number,
   # you can use this api to get an encrypted url:
