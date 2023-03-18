@@ -4,14 +4,13 @@ tags: 前端
 date: 2023-03-18 16:53:00
 ---
 
-
-# 虚拟 DOM 介绍
+## 虚拟 DOM 介绍
 
 早期 Web 开发中，视图改变都需要程序员手动修改 DOM。直到 jQuery 的时代，DOM 操作有了极大的简化，但仍然需要我们频繁操作 DOM 实现页面效果和交互。
 
 随着数据驱动视图思想的出现，Vue 和 React 两大开发框架面世，提出了一个新的概念——虚拟 DOM。虚拟 DOM 是一层对真实 DOM 的抽象，以 JavaScript 对象 (VNode 节点) 作为基础的树，用对象的属性来描述节点。数据改变后，通过修改这个对象，然后把它与真实 DOM 进行比较，最后仅修改必要的 DOM 节点，就能完成视图更新。而这个 DOM 比较的算法就是 diff 算法。在不同开发框架，同一开发框架的不同版本中，diff 算法都有不同实现，**diff 算法发生在虚拟 DOM 上**。
 
-## 虚拟 DOM 对象举例
+### 虚拟 DOM 对象举例
 
 ```html
 <!-- 真实DOM -->
@@ -45,13 +44,13 @@ date: 2023-03-18 16:53:00
 }
 ```
 
-# diff 算法的起始——Snabbdom
+## diff 算法的起始——Snabbdom
 
 [Snabbdom 项目 Github 地址](https://github.com/snabbdom/snabbdom)
 
 Snabbdom 是一个虚拟 DOM 库，其核心代码只有约 200 行。下面先跑通 Snabbdom 的官方样例代码。
 
-## Snabbdom 样例代码
+### Snabbdom 样例代码
 
 先搭建运行环境。作为一个虚拟 DOM 库，当然不能运行在 nodejs 环境，因此先搭建 webpack-dev-server。
 
@@ -159,7 +158,7 @@ npm run dev 运行该脚本，即可访问 http://localhost:8080 观察样例代
 
 ![Snabbdom样例代码运行结果](/img/虚拟DOM学习/Snabbdom/Snabbdom样例代码运行结果.jpg)
 
-## 样例代码研究
+### 样例代码研究
 
 再贴一次样例代码方便观察
 
@@ -211,7 +210,7 @@ patch(vnode, newVnode) // 将旧节点更新为新节点
 
 首先不难猜出，h 函数的作用就是创建一个虚拟 DOM 节点，下面点进 h 函数阅读 ts 源码（已加上注释）
 
-### h 函数——用于创建虚拟节点
+#### h 函数——用于创建虚拟节点
 
 ```TypeScript
 export function h(sel: any, b?: any, c?: any): VNode {
@@ -276,7 +275,7 @@ export function h(sel: any, b?: any, c?: any): VNode {
 
 这个函数还是相当好理解的，根据参数的类型和数量，返回一个 VNode 类型的对象（vnode 函数返回 new 出来的），也就是一个虚拟 DOM 节点
 
-### h 函数的返回值——VNode 对象
+#### h 函数的返回值——VNode 对象
 
 既然 h 函数返回的是一个 VNode 对象，那接下来看看这个类是个什么东西
 
@@ -316,19 +315,19 @@ export interface VNodeData {
 - [DOM 中 property 和 attribute 详解 1](https://www.bbsmax.com/A/GBJr7NBB50/)
 - [DOM 中 property 和 attribute 详解 2](https://www.bbsmax.com/A/gAJGGAr8JZ/)
 
-简单的总结一下就是，这两者的区分没有什么规则，但有一定规律，并且props是DOM元素初始化时自带的一些属性
+简单的总结一下就是，这两者的区分没有什么规则，但有一定规律，并且 props 是 DOM 元素初始化时自带的一些属性
 
-# 未完待续
+## 未完待续
 
-# 虚拟 DOM 的优缺点
+## 虚拟 DOM 的优缺点
 
-## 优点
+### 优点
 
 - 保证性能下限： 框架的虚拟 DOM 需要适配任何上层 API 可能产生的操作，它的一些 DOM 操作的实现必须是普适的，所以它的性能并不是最优的；但是比起粗暴的 DOM 操作性能要好很多，因此框架的虚拟 DOM 至少可以保证在不需要手动优化的情况下，依然可以提供还不错的性能，即保证性能的下限；
 - 无需手动操作 DOM： 不再需要手动去操作 DOM，只需要写好 View-Model 的代码逻辑，框架会根据虚拟 DOM 和 数据双向绑定，以可预期的方式更新视图，极大提高开发效率；
 - 跨平台： 虚拟 DOM 本质上是 JavaScript 对象,而 DOM 与平台强相关，相比之下虚拟 DOM 可以进行更方便地跨平台操作，例如服务器渲染、weex 开发等等。
 
-## 缺点
+### 缺点
 
 - 无法进行极致优化： 虽然虚拟 DOM + 合理的优化，足以应对绝大部分应用的性能需求，但在一些性能要求极高的应用中虚拟 DOM 无法进行针对性的极致优化；
 - 首次渲染大量 DOM 时，由于多了一层虚拟 DOM 的计算，会比 innerHTML 插入慢。
