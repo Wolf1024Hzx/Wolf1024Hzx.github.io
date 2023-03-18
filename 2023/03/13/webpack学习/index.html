@@ -49,7 +49,7 @@
         content="2023-03-13">
       <meta 
         property="og:article:modified_time" 
-        content="2023-03-13">
+        content="2023-03-18">
       <meta 
         property="og:article:author" 
         content="小狼">
@@ -297,7 +297,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>4</span>
+    <span>5</span>
     <span>文章</span>
   </a>
   <a 
@@ -336,7 +336,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8webpack"><span class="toc-text">为什么使用webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-text">入门</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-webpack"><span class="toc-text">为什么使用 webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-text">入门</span></a></li></ol>
       </div>
     </article>
   
@@ -447,7 +447,7 @@
     
     
       <span class="dot"></span>
-      <span>670 字</span>
+      <span>743 字</span>
     
   </div>
   
@@ -475,24 +475,26 @@
     id="section" 
     class="post-content">
     <p>持续更新中<br>不得不说上班摸鱼是一件快乐的事情</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>众所周知，vue-cli和create-react-app都是内置webpack进行打包<br>那么这个这么重要的东西是什么，官网是这样定义的</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>众所周知，vue-cli 和 create-react-app 都是内置 webpack 进行打包<br>那么这个这么重要的东西是什么，官网是这样定义的</p>
 <blockquote>
-<p>webpack 是一个用于现代 JavaScript 应用程序的 <em>静态模块</em>打包工具。当 webpack 处理应用程序时，它会在内部从一个或多个入口点构建一个 依赖图(dependency graph)，然后将你项目中所需的每一个模块组合成一个或多个 bundles<a href="bundles%E6%98%AFwebpack%E6%89%93%E5%8C%85%E5%90%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%AE%83%E4%BB%AC%E5%8C%85%E5%90%AB%E4%BA%86%E7%BB%8F%E8%BF%87%E5%8A%A0%E8%BD%BD%E5%92%8C%E7%BC%96%E8%AF%91%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E3%80%82%E4%B8%80%E4%B8%AAbundle%E5%8F%AF%E4%BB%A5%E7%94%B1%E4%B8%80%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E6%A8%A1%E5%9D%97%EF%BC%88module%EF%BC%89%E7%BB%84%E6%88%90%EF%BC%8C%E6%A8%A1%E5%9D%97%E6%98%AFwebpack%E5%A4%84%E7%90%86%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8D%95%E4%BD%8D%E3%80%82">^1</a>，它们均为静态资源，用于展示你的内容。</p>
+<p>webpack 是一个用于现代 JavaScript 应用程序的 <em>静态模块</em>打包工具。当 webpack 处理应用程序时，它会在内部从一个或多个入口点构建一个 依赖图(dependency graph)，然后将你项目中所需的每一个模块组合成一个或多个 bundles[^1]，它们均为静态资源，用于展示你的内容。</p>
 </blockquote>
 <p>（好的，看到官网这种不说人话的风格是真的发晕，也就贴上来镇场子）</p>
-<h2 id="为什么使用webpack"><a href="#为什么使用webpack" class="headerlink" title="为什么使用webpack"></a>为什么使用webpack</h2><p>首先，模块化开发是历史的趋势，不解释<br>那模块化开发，总得引入模块呀，所以随着不同模块化规范的出现，引入模块的语法也出现了好几种，最常见的两个：</p>
+<p>[^1]: bundles 是 webpack 打包后生成的文件，它们包含了经过加载和编译的源代码。一个 bundle 可以由一个或多个模块（module）组成，模块是 webpack 处理项目中的不同类型的文件的基本单位。</p>
+<h2 id="为什么使用-webpack"><a href="#为什么使用-webpack" class="headerlink" title="为什么使用 webpack"></a>为什么使用 webpack</h2><p>首先，模块化开发是历史的趋势，不解释<br>那模块化开发，总得引入模块呀，所以随着不同模块化规范的出现，引入模块的语法也出现了好几种，最常见的两个：</p>
 <pre class="highlight"><code class="hljs JavaScipt">// CommonJS<br>const path = require(&#x27;path&#x27;)<br><br>// ES6<br>import Vue from &#x27;vue&#x27;<br></code></pre>
-<p>那分成了不同模块，运行代码的时候得有人做类似编译链接的事情呀，不然鬼知道依赖树有多高有多大<br>所以构建工具就成了必不可少的了，webpack就是其中之一<br>加上对于模块化开发来说有个坏消息，就是上面这些引入模块的语法刚面世的时候浏览器不双标，几乎一视同仁的不支持<br>所以构建工具还得肩负起把这些高级语法转换成ES5语法，这才能让浏览器执行。</p>
-<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>稍微详细点说，webpac打包的时候做了这些事:</p>
+
+<p>那分成了不同模块，运行代码的时候得有人做类似编译链接的事情呀，不然鬼知道依赖树有多高有多大<br>所以构建工具就成了必不可少的了，webpack 就是其中之一<br>加上对于模块化开发来说有个坏消息，就是上面这些引入模块的语法刚面世的时候浏览器不双标，几乎一视同仁的不支持<br>所以构建工具还得肩负起把这些高级语法转换成 ES5 语法，这才能让浏览器执行。</p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>稍微详细点说，webpac 打包的时候做了这些事:</p>
 <ul>
 <li>解析入口文件</li>
 <li>递归分析依赖，生成抽象语法树</li>
-<li>根据入口和依赖模块生成 chunk（有点类似手动的分包，打包完后这些chunk是可以按需下载，也可以并行下载加快加载速度）</li>
-<li>把每个模块进行转换，这里的模块除了js还包含css、图片等等，但webpack本身是只认识js和json的，所以在这一步中,webpack会按顺序链式调用所有配置好的Loader对模块进行处理。此外这一步还包括把js转译成ES5语法，对代码进行压缩等等</li>
+<li>根据入口和依赖模块生成 chunk（有点类似手动的分包，打包完后这些 chunk 是可以按需下载，也可以并行下载加快加载速度）</li>
+<li>把每个模块进行转换，这里的模块除了 js 还包含 css、图片等等，但 webpack 本身是只认识 js 和 json 的，所以在这一步中,webpack 会按顺序链式调用所有配置好的 Loader 对模块进行处理。此外这一步还包括把 js 转译成 ES5 语法，对代码进行压缩等等</li>
 <li>对每个 chunk 进行优化、整合、拆分、去重等操作，生成最终的资源文件（assets）</li>
 <li>输出资源文件到指定的目录中</li>
 </ul>
-<p>然后就得到熟悉的dist目录啦<br>但是为什么上面的全是抽象的名词捏，还是需要更详细点的过程解析（晕）</p>
+<p>然后就得到熟悉的 dist 目录啦<br>但是为什么上面的全是抽象的名词捏，还是需要更详细点的过程解析（晕）</p>
 
   </div>
   <div>
@@ -523,6 +525,20 @@
 </article>
 <div class="nav">
   
+    <div class="nav-item-prev">
+      <a 
+        href="/2023/03/18/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">虚拟DOM学习 </div>
+          
+        </div>
+      </a>
+    </div>
+  
   
     <div class="nav-item-next">
       <a 
@@ -549,7 +565,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8webpack"><span class="toc-text">为什么使用webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-text">入门</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-webpack"><span class="toc-text">为什么使用 webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-text">入门</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -563,7 +579,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8webpack"><span class="toc-text">为什么使用webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-text">入门</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-webpack"><span class="toc-text">为什么使用 webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-text">入门</span></a></li></ol>
     </article>
   
   
@@ -578,6 +594,11 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-03-18</div>
+        <a href="/2023/03/18/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/"><div class="recent-posts-item-content">虚拟DOM学习</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-03-13</div>
         <a href="/2023/03/13/webpack%E5%AD%A6%E4%B9%A0/"><div class="recent-posts-item-content">webpack简易笔记</div></a>
       </div>
@@ -590,11 +611,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-03-11</div>
         <a href="/2023/03/11/Springboot%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/"><div class="recent-posts-item-content">Springboot实现数据库读写分离</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-03-10</div>
-        <a href="/2023/03/10/hello-world/"><div class="recent-posts-item-content">Hello World</div></a>
       </div>
     
   </div>

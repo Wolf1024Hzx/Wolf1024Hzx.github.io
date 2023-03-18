@@ -49,7 +49,7 @@
         content="2023-03-11">
       <meta 
         property="og:article:modified_time" 
-        content="2023-03-13">
+        content="2023-03-18">
       <meta 
         property="og:article:author" 
         content="小狼">
@@ -297,7 +297,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>4</span>
+    <span>5</span>
     <span>文章</span>
   </a>
   <a 
@@ -336,7 +336,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack%E5%86%99%E6%B3%95"><span class="toc-text">webpack写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vite%E5%86%99%E6%B3%95"><span class="toc-text">vite写法</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E5%86%99%E6%B3%95"><span class="toc-text">webpack 写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vite-%E5%86%99%E6%B3%95"><span class="toc-text">vite 写法</span></a></li></ol>
       </div>
     </article>
   
@@ -438,7 +438,7 @@
     
     
       <span class="dot"></span>
-      <span>226 字</span>
+      <span>228 字</span>
     
   </div>
   
@@ -465,10 +465,12 @@
   <div 
     id="section" 
     class="post-content">
-    <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在过去的实习和项目开发经历中，规范的大项目都是使用vue2，因此习惯了使用webpack的require.context批量导入模块。<br>但最近学习使用vite + taildwindcss进行开发时想起来vite没有这个接口，因此找办法代替</p>
+    <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在过去的实习和项目开发经历中，规范的大项目都是使用 vue2，因此习惯了使用 webpack 的 require.context 批量导入模块。<br>但最近学习使用 vite + taildwindcss 进行开发时想起来 vite 没有这个接口，因此找办法代替</p>
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="/img/vite%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8A%A0%E8%BD%BDstore%E5%92%8C%E6%8E%A5%E5%8F%A3/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg" alt="store缓存文件结构" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/vite%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8A%A0%E8%BD%BDstore%E5%92%8C%E6%8E%A5%E5%8F%A3/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg" class="lozad post-image"></p>
-<h2 id="webpack写法"><a href="#webpack写法" class="headerlink" title="webpack写法"></a>webpack写法</h2><pre class="highlight"><code class="hljs JavaScript"><span class="hljs-comment">// index.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vuex</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">Vuex</span>)<br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">devtools</span> = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 打开vue调试工具</span><br><span class="hljs-keyword">const</span> files = <span class="hljs-built_in">require</span>.<span class="hljs-title function_">context</span>(<span class="hljs-string">&#x27;./modules&#x27;</span>, <span class="hljs-literal">false</span>, <span class="hljs-regexp">/\.js$/</span>)<br><span class="hljs-keyword">const</span> modules = &#123;&#125;<br><br>files.<span class="hljs-title function_">keys</span>().<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>  modules[key.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(\.\/|\.js)/g</span>, <span class="hljs-string">&#x27;&#x27;</span>)] = <span class="hljs-title function_">files</span>(key).<span class="hljs-property">default</span><br>&#125;)<br><br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(modules).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>  modules[key][<span class="hljs-string">&#x27;namespaced&#x27;</span>] = <span class="hljs-literal">true</span><br>&#125;)<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vuex</span>.<span class="hljs-title class_">Store</span>(&#123;<br>  modules<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store<br></code></pre>
-<h2 id="vite写法"><a href="#vite写法" class="headerlink" title="vite写法"></a>vite写法</h2><pre class="highlight"><code class="hljs JavaScript"><span class="hljs-comment">// index.js</span><br><span class="hljs-keyword">import</span> &#123; createStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br><span class="hljs-keyword">const</span> routeFiles = <span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-title function_">globEager</span>(<span class="hljs-string">&#x27;@/store/modules/*.js&#x27;</span>)<br><br><span class="hljs-keyword">const</span> modules = &#123;&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> path <span class="hljs-keyword">in</span> routeFiles) &#123;<br>  <span class="hljs-keyword">const</span> key = path.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\/src\/store\/modules\/(.*?).js/</span>)[<span class="hljs-number">1</span>]<br>  modules[key] = routeFiles[path].<span class="hljs-property">default</span><br>  modules[key][<span class="hljs-string">&#x27;namespaced&#x27;</span>] = <span class="hljs-literal">true</span><br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">createStore</span>(&#123;<br>  modules<br>&#125;)<br></code></pre>
+<h2 id="webpack-写法"><a href="#webpack-写法" class="headerlink" title="webpack 写法"></a>webpack 写法</h2><pre class="highlight"><code class="hljs JavaScript"><span class="hljs-comment">// index.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vuex</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">Vuex</span>)<br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">devtools</span> = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 打开vue调试工具</span><br><span class="hljs-keyword">const</span> files = <span class="hljs-built_in">require</span>.<span class="hljs-title function_">context</span>(<span class="hljs-string">&#x27;./modules&#x27;</span>, <span class="hljs-literal">false</span>, <span class="hljs-regexp">/\.js$/</span>)<br><span class="hljs-keyword">const</span> modules = &#123;&#125;<br><br>files.<span class="hljs-title function_">keys</span>().<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>  modules[key.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(\.\/|\.js)/g</span>, <span class="hljs-string">&#x27;&#x27;</span>)] = <span class="hljs-title function_">files</span>(key).<span class="hljs-property">default</span><br>&#125;)<br><br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(modules).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>  modules[key][<span class="hljs-string">&#x27;namespaced&#x27;</span>] = <span class="hljs-literal">true</span><br>&#125;)<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vuex</span>.<span class="hljs-title class_">Store</span>(&#123;<br>  modules<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store<br></code></pre>
+
+<h2 id="vite-写法"><a href="#vite-写法" class="headerlink" title="vite 写法"></a>vite 写法</h2><pre class="highlight"><code class="hljs JavaScript"><span class="hljs-comment">// index.js</span><br><span class="hljs-keyword">import</span> &#123; createStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br><span class="hljs-keyword">const</span> routeFiles = <span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-title function_">globEager</span>(<span class="hljs-string">&#x27;@/store/modules/*.js&#x27;</span>)<br><br><span class="hljs-keyword">const</span> modules = &#123;&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> path <span class="hljs-keyword">in</span> routeFiles) &#123;<br>  <span class="hljs-keyword">const</span> key = path.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\/src\/store\/modules\/(.*?).js/</span>)[<span class="hljs-number">1</span>]<br>  modules[key] = routeFiles[path].<span class="hljs-property">default</span><br>  modules[key][<span class="hljs-string">&#x27;namespaced&#x27;</span>] = <span class="hljs-literal">true</span><br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">createStore</span>(&#123;<br>  modules<br>&#125;)<br></code></pre>
+
 <p>问题解决</p>
 
   </div>
@@ -540,7 +542,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack%E5%86%99%E6%B3%95"><span class="toc-text">webpack写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vite%E5%86%99%E6%B3%95"><span class="toc-text">vite写法</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E5%86%99%E6%B3%95"><span class="toc-text">webpack 写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vite-%E5%86%99%E6%B3%95"><span class="toc-text">vite 写法</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -554,7 +556,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack%E5%86%99%E6%B3%95"><span class="toc-text">webpack写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vite%E5%86%99%E6%B3%95"><span class="toc-text">vite写法</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E5%86%99%E6%B3%95"><span class="toc-text">webpack 写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vite-%E5%86%99%E6%B3%95"><span class="toc-text">vite 写法</span></a></li></ol>
     </article>
   
   
@@ -569,6 +571,11 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-03-18</div>
+        <a href="/2023/03/18/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/"><div class="recent-posts-item-content">虚拟DOM学习</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-03-13</div>
         <a href="/2023/03/13/webpack%E5%AD%A6%E4%B9%A0/"><div class="recent-posts-item-content">webpack简易笔记</div></a>
       </div>
@@ -581,11 +588,6 @@
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-03-11</div>
         <a href="/2023/03/11/Springboot%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/"><div class="recent-posts-item-content">Springboot实现数据库读写分离</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-03-10</div>
-        <a href="/2023/03/10/hello-world/"><div class="recent-posts-item-content">Hello World</div></a>
       </div>
     
   </div>
