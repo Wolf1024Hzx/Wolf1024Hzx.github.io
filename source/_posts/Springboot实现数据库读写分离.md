@@ -13,12 +13,17 @@ banner_img: /img/java.png
 ---
 
 ## 前言
-由于shardingsphere官方文档的[配置参考](https://shardingsphere.apache.org/document/current/cn/quick-start/shardingsphere-jdbc-quick-start/)用了报错，网上的也基本用不了，于是参考其他博客，通过aop手动更改数据源。
+
+由于 shardingsphere 官方文档的[配置参考](https://shardingsphere.apache.org/document/current/cn/quick-start/shardingsphere-jdbc-quick-start/)用了报错，网上的也基本用不了，于是参考其他博客，通过 aop 手动更改数据源。
+
 ## 参考博客
+
 [第一篇](https://www.modb.pro/db/155331)
 [第二篇](https://www.cnblogs.com/wuyoucao/p/10965903.html)
-前置操作：配置好mysql的读写分离
-## Springboot yml配置文件(部分)
+前置操作：配置好 mysql 的读写分离
+
+## Springboot yml 配置文件(部分)
+
 ```yml
 spring:
   datasource:
@@ -32,18 +37,23 @@ spring:
       jdbc-url: 从数据库链接
       username: 用户
       password: 密码
-    其他从数据库:
-      ...
+    其他从数据库: ...
 ```
+
 配置了多个数据源，因此需要一个配置类，设置当前使用哪个数据源。
+
 ## 枚举类
-先创建一个枚举类，作为数据源的key
+
+先创建一个枚举类，作为数据源的 key
+
 ```Java
 public enum DBTypeEnum {
     MASTER, SLAVE0;
 }
 ```
+
 ## 数据源配置类
+
 ```Java
 @Configuration
 public class DataSourceConfig {
@@ -75,8 +85,11 @@ public class DataSourceConfig {
     }
 }
 ```
-## mybatis配置类
-配置mybatis，使用myRoutingDataSource这个数据源
+
+## mybatis 配置类
+
+配置 mybatis，使用 myRoutingDataSource 这个数据源
+
 ```Java
 @EnableTransactionManagement(order = 10) // 设置事务优先级，这很重要！！
 @Configuration
@@ -97,7 +110,9 @@ public class MyBatisConfig {
     }
 }
 ```
+
 ## 把数据源配置到线程上下文中
+
 ```Java
 public class DBContextHolder {
     private static final ThreadLocal<DBTypeEnum> contextHolder = new ThreadLocal<>();
@@ -118,7 +133,9 @@ public class DBContextHolder {
     }
 }
 ```
-## 重写determineCurrentLookupKey切换数据源
+
+## 重写 determineCurrentLookupKey 切换数据源
+
 ```Java
 public class MyRoutingDataSource extends AbstractRoutingDataSource {
     @Override
@@ -127,9 +144,12 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
     }
 }
 ```
+
 ## AOP
-最后，通过aop，在每次执行mybatis的前判断sql类型，读操作分配从数据库，写操作分配到主数据库。
+
+最后，通过 aop，在每次执行 mybatis 的前判断 sql 类型，读操作分配从数据库，写操作分配到主数据库。
 根据参考博客，有可能存在必须从主库读的情况，因此加一个注解表示强制从主库读：
+
 ```Java
 @Aspect
 @Component
@@ -164,5 +184,6 @@ public class DataSourceAop implements Ordered {
     }
 }
 ```
-注意这里重写了getOrder方法，这是因为按照第一篇博客的配置，会发现服务器的执行顺序是springboot拿到数据源->尝试执行sql->aop->执行sql，这样一来aop改变数据源就没有效果，全是从主机读写。因此需要把数据库事务的优先级调低，把aop操作的优先级调高，确保数据源被成功切换。
+
+注意这里重写了 getOrder 方法，这是因为按照第一篇博客的配置，会发现服务器的执行顺序是 springboot 拿到数据源->尝试执行 sql->aop->执行 sql，这样一来 aop 改变数据源就没有效果，全是从主机读写。因此需要把数据库事务的优先级调低，把 aop 操作的优先级调高，确保数据源被成功切换。
 可以通过数据库通用查询日志（general_log）观察读写分离是否成功。

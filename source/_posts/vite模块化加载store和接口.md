@@ -12,11 +12,16 @@ date: 2023-03-11 21:40:45
 ---
 
 ## 问题描述
-在过去的实习和项目开发经历中，规范的大项目都是使用vue2，因此习惯了使用webpack的require.context批量导入模块。
-但最近学习使用vite + taildwindcss进行开发时想起来vite没有这个接口，因此找办法代替
+
+在过去的实习和项目开发经历中，规范的大项目都是使用 vue2，因此习惯了使用 webpack 的 require.context 批量导入模块。
+但最近学习使用 vite + taildwindcss 进行开发时想起来 vite 没有这个接口，因此找办法代替
+
 ## 目录结构
+
 ![store缓存文件结构](/img/vite模块化加载store和接口/文件结构.jpg)
-## webpack写法
+
+## webpack 写法
+
 ```JavaScript
 // index.js
 import Vue from 'vue'
@@ -41,7 +46,9 @@ const store = new Vuex.Store({
 
 export default store
 ```
-## vite写法
+
+## vite 写法
+
 ```JavaScript
 // index.js
 import { createStore } from 'vuex'
@@ -58,4 +65,5 @@ export default createStore({
   modules
 })
 ```
+
 问题解决
