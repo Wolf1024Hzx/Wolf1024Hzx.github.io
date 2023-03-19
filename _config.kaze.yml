@@ -51,7 +51,7 @@ links:
 # Post
 #------------------------
 toc:
-  showListNumber: false
+  showListNumber: true
   maxDepth: 6
   minDepth: 1
 
