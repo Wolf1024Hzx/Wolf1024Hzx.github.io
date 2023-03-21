@@ -28,12 +28,12 @@
     
       <meta 
         property="og:url" 
-        content="https://wolf1024hzx.github.io/2023/03/18/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/index.html">
+        content="https://wolf1024hzx.github.io/2023/03/20/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/index.html">
     
     
       <meta 
         property="og:img" 
-        content="/img/avatar.jpg">
+        content="/img/虚拟DOM学习/Snabbdom/banner.jpg">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2023-03-18">
+        content="2023-03-20">
       <meta 
         property="og:article:modified_time" 
-        content="2023-03-19">
+        content="2023-03-21">
       <meta 
         property="og:article:author" 
         content="小狼">
@@ -412,6 +412,15 @@
             </aside>
             <main class="main-column">
               
+  <div class="image-wrapper">
+    <img 
+      src="/img/虚拟DOM学习/Snabbdom/banner.jpg" 
+      data-src="/img/虚拟DOM学习/Snabbdom/banner.jpg"
+      srcset="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
+      class="image lozad"
+      alt="虚拟DOM学习 thumbnail">
+  </div>
+
 <article class="card card-content">
   <header>
     <h1 class="post-title">
@@ -419,12 +428,12 @@
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2023-03-18T08:53:00.000Z">
+    <time datetime="2023-03-20T08:53:00.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2023-03-18</span>
+      <span>2023-03-20</span>
     </time>
     
       <span class="dot"></span>
@@ -438,7 +447,7 @@
     
     
       <span class="dot"></span>
-      <span>5k 字</span>
+      <span>6.8k 字</span>
     
   </div>
   
@@ -546,7 +555,13 @@
 
 <p>然后修改一下 snabbdom 源码（build 里的 js 文件，ts 只是阅读的，js 才是实际调用的）<br><img src="/img/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/Snabbdom/%E9%AA%8C%E8%AF%81vnode%E7%9A%84data%E7%9A%84%E6%9B%B4%E6%96%B0%E4%BD%8D%E7%BD%AE.jpg" alt="验证vnode的data的更新位置" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/Snabbdom/%E9%AA%8C%E8%AF%81vnode%E7%9A%84data%E7%9A%84%E6%9B%B4%E6%96%B0%E4%BD%8D%E7%BD%AE.jpg" class="lozad post-image"><br>然后运行 dev server，观察输出结果：<br><img src="/img/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/Snabbdom/data%E6%9B%B4%E6%96%B0%E4%BD%8D%E7%BD%AE%E5%9C%A8update%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E9%87%8C.jpg" alt="data更新位置在update钩子函数里" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/Snabbdom/data%E6%9B%B4%E6%96%B0%E4%BD%8D%E7%BD%AE%E5%9C%A8update%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E9%87%8C.jpg" class="lozad post-image"><br>这下结果就很明显了，<strong>data 的更新位置在第三方模块传入的 update 钩子中！</strong></p>
 <p>既然是第三方传入的，那不急着看传入的 update 钩子函数的内容；但我们得到了一个结论，<code>patchVnode</code>函数看起来只更新孩子节点或文本内容，是因为在开头的钩子函数中已经处理 data 的更新。<br>接下来就进入<code>updateChildren</code>函数，观察两个 vnode 都有孩子的情况下，真实 DOM 是怎么更新的</p>
-<h4 id="updateChildren-函数——新旧-vnode-都有孩子的情况下更新真实-DOM"><a href="#updateChildren-函数——新旧-vnode-都有孩子的情况下更新真实-DOM" class="headerlink" title="updateChildren 函数——新旧 vnode 都有孩子的情况下更新真实 DOM"></a>updateChildren 函数——新旧 vnode 都有孩子的情况下更新真实 DOM</h4><p>未完待续</p>
+<h4 id="updateChildren-函数——新旧-vnode-都有孩子的情况下更新真实-DOM"><a href="#updateChildren-函数——新旧-vnode-都有孩子的情况下更新真实-DOM" class="headerlink" title="updateChildren 函数——新旧 vnode 都有孩子的情况下更新真实 DOM"></a>updateChildren 函数——新旧 vnode 都有孩子的情况下更新真实 DOM</h4><p>为了更好的理解这个函数，我们把 sameVnode 的作用换一个更合适的说法：<strong>如果 sameVnode 的判断为真，就说明 oldVnode 指向的真实 DOM 不需要销毁，只需要改变内容，或者改变位置就可以了</strong></p>
+<p>这个想法非常关键，因为 diff 的最小更新思路，就是通过<strong>尽量不删除真实 DOM</strong>实现的。</p>
+<p>既然要真实 DOM 尽可能少销毁，那么平时在使用框架开发时，我们经常对表格的数据进行排序，这一过程就必然只涉及真实 DOM 节点的移动。而真实 DOM 节点的移动通过下面这个 DOM api 实现：<br><img src="/img/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/Snabbdom/insertBefore.jpg" alt="insertBefore" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/Snabbdom/insertBefore.jpg" class="lozad post-image"><br>这个函数接收两个真实 DOM 元素作为参数，调用的节点为父元素，第二个参数是这个父元素的孩子，函数的作用是把第一个参数的节点插入这个父元素中，并插入在第二个参数传入的孩子前，。但值得注意的是，选中的部分已经说明了，如果第一个参数已经存在父节点中，那么<strong>第一个参数传入的节点只会移动位置，而不会新建一个一样的节点</strong>。这就实现了我们需要的移动效果。</p>
+<p>接下来，真正开始看这最核心部分的源码，思路过程都在注释里</p>
+<pre class="highlight"><code class="hljs TypeScript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">updateChildren</span>(<span class="hljs-params"></span><br><span class="hljs-params">    parentElm: Node,</span><br><span class="hljs-params">    oldCh: VNode[],</span><br><span class="hljs-params">    newCh: VNode[],</span><br><span class="hljs-params">    insertedVnodeQueue: VNodeQueue</span><br><span class="hljs-params">  </span>) &#123;<br>    <span class="hljs-comment">// 这些指针都是指向当前未处理的节点！！</span><br>    <span class="hljs-keyword">let</span> oldStartIdx = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> newStartIdx = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> oldEndIdx = oldCh.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> oldStartVnode = oldCh[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">let</span> oldEndVnode = oldCh[oldEndIdx];<br>    <span class="hljs-keyword">let</span> newEndIdx = newCh.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> newStartVnode = newCh[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">let</span> newEndVnode = newCh[newEndIdx];<br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">oldKeyToIdx</span>: <span class="hljs-title class_">KeyToIndexMap</span> | <span class="hljs-literal">undefined</span>;<br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">idxInOld</span>: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">elmToMove</span>: <span class="hljs-title class_">VNode</span>;<br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">before</span>: <span class="hljs-built_in">any</span>;<br><br>    <span class="hljs-comment">// 下面的循环体中的内容，实质上是找到所有可以复用的真实DOM节点（我们的目的就是尽可能复用，少删除少新建），更新他们的内容并插到合适的位置</span><br>    <span class="hljs-comment">// 如果旧的vnode的待处理节点指针相遇，说明现有的真实DOM已经处理完了，如果新的vnode指针还没相遇，剩下的孩子就都是必须新建真实DOM的了</span><br>    <span class="hljs-comment">// 如果新的vnode的待处理节点指针相遇，说明真实DOM的两侧已经是我们期待的样子了，中间的真实DOM也就是旧vnode待处理指针之间的，都是必须得删除的</span><br>    <span class="hljs-comment">// 上述两种情况，都是说明现有的可以复用的真实DOM已经更新复用完了，剩下多出来的必须要删除，缺少的就必须要新建</span><br>    <span class="hljs-keyword">while</span> (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123;<br>      <span class="hljs-comment">// 注意，这里用的不是===，而undefine == null是true</span><br>      <span class="hljs-keyword">if</span> (oldStartVnode == <span class="hljs-literal">null</span>) &#123;<br>        oldStartVnode = oldCh[++oldStartIdx]; <span class="hljs-comment">// Vnode might have been moved left</span><br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (oldEndVnode == <span class="hljs-literal">null</span>) &#123;<br>        oldEndVnode = oldCh[--oldEndIdx];<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (newStartVnode == <span class="hljs-literal">null</span>) &#123;<br>        newStartVnode = newCh[++newStartIdx];<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (newEndVnode == <span class="hljs-literal">null</span>) &#123;<br>        newEndVnode = newCh[--newEndIdx];<br>      &#125;<br>      <span class="hljs-comment">// 下面开始处理，首先我们最希望的的肯定是真实DOM不用删除，也不用移动，就在当前位置更新就好</span><br>      <span class="hljs-comment">// 所以先看看左侧第一个真实DOM要不要删除或移动</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-title function_">sameVnode</span>(oldStartVnode, newStartVnode)) &#123;<br>        <span class="hljs-comment">// 左侧第一个真实DOM可以被复用！那么原地更新就好，当前节点处理完，左侧的待处理指针右移</span><br>        <span class="hljs-title function_">patchVnode</span>(oldStartVnode, newStartVnode, insertedVnodeQueue);<br>        oldStartVnode = oldCh[++oldStartIdx];<br>        newStartVnode = newCh[++newStartIdx];<br>      &#125;<br>      <span class="hljs-comment">// 很遗憾左侧第一个的真实DOM和新的虚拟DOM对不上，也就是说可能要被移动到其他地方或者被删除</span><br>      <span class="hljs-comment">// 那我们再从右侧判断，看看右侧第一个真实DOM要不要删除或移动</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-title function_">sameVnode</span>(oldEndVnode, newEndVnode)) &#123;<br>        <span class="hljs-comment">// 右侧第一个真实DOM可以被复用！那么原地更新就好，当前节点处理完，右侧的待处理指针左移</span><br>        <span class="hljs-title function_">patchVnode</span>(oldEndVnode, newEndVnode, insertedVnodeQueue);<br>        oldEndVnode = oldCh[--oldEndIdx];<br>        newEndVnode = newCh[--newEndIdx];<br>      &#125;<br>      <span class="hljs-comment">// 没办法，左右两侧的真实DOM都和我们期待的样子对不上</span><br>      <span class="hljs-comment">// 但还可能存在一种情况：</span><br>      <span class="hljs-comment">// 初始状态 A B C ...... X Y Z</span><br>      <span class="hljs-comment">// 目标状态 A B U ...... C Y Z</span><br>      <span class="hljs-comment">// 经过刚刚的两种最简单的判断，左侧的A B和右侧的Y Z都已经更新完</span><br>      <span class="hljs-comment">// 所以oldStartVnode指向C，oldEndVnode指向X，newStartVnode指向U，newEndVnode指向C</span><br>      <span class="hljs-comment">// 我们一眼就能看出来C只用换个位置，C插在oldEndVnode的后一项的前面（把X往前挤）就好了</span><br>      <span class="hljs-comment">// 下面的代码就是干这件事，看看有没有现在最左侧的真实DOM是可以直接移到右侧的</span><br>      <span class="hljs-comment">// 尽可能少循环，不考虑真实DOM的移动过程的话，这种判断的时间复杂度就是O(1)，</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-title function_">sameVnode</span>(oldStartVnode, newEndVnode)) &#123;<br>        <span class="hljs-title function_">patchVnode</span>(oldStartVnode, newEndVnode, insertedVnodeQueue);<br>        <span class="hljs-comment">// 移动到oldEndVnode的后一项的前面</span><br>        api.<span class="hljs-title function_">insertBefore</span>(<br>          parentElm,<br>          oldStartVnode.<span class="hljs-property">elm</span>!,<br>          api.<span class="hljs-title function_">nextSibling</span>(oldEndVnode.<span class="hljs-property">elm</span>!)<br>        );<br>        <span class="hljs-comment">// 待处理的指针移动</span><br>        oldStartVnode = oldCh[++oldStartIdx];<br>        newEndVnode = newCh[--newEndIdx];<br>      &#125;<br>      <span class="hljs-comment">// 同理，和上面的不同方向罢了</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-title function_">sameVnode</span>(oldEndVnode, newStartVnode)) &#123;<br>        <span class="hljs-comment">// Vnode moved left</span><br>        <span class="hljs-title function_">patchVnode</span>(oldEndVnode, newStartVnode, insertedVnodeQueue);<br>        api.<span class="hljs-title function_">insertBefore</span>(parentElm, oldEndVnode.<span class="hljs-property">elm</span>!, oldStartVnode.<span class="hljs-property">elm</span>!);<br>        oldEndVnode = oldCh[--oldEndIdx];<br>        newStartVnode = newCh[++newStartIdx];<br>      &#125;<br>      <span class="hljs-comment">// 没办法了，当前真实DOM两端的节点都找不到能复用的位置</span><br>      <span class="hljs-comment">// 此时待处理指针两侧的真实DOM已经更新，排列成我们希望的样子了（和新的虚拟DOM一样）</span><br>      <span class="hljs-comment">// 那我们从新虚拟DOM待处理的最左侧节点入手，去循环找有没有 未被复用过，但现在可以拿来复用的真实DOM</span><br>      <span class="hljs-comment">// 如果有，拿来更新内容，插在oldStartVnode指向的真实DOM的前面就好了（因为新的虚拟DOM期待它在当前未处理的最左侧）</span><br>      <span class="hljs-comment">// 记得把被复用的这个真实DOM对应的oldVnode标记为已经复用过，设置成undefine就好了，经过上面undefnie == null的判断会被过滤掉</span><br>      <span class="hljs-comment">// 如果没有可以复用的真实DOM，只好新建了，还是插在oldStartVnode指向的真实DOM的前面</span><br>      <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 这里判断是否可以复用，只与key、孩子的标签有关，都相同就可以复用</span><br>        <span class="hljs-keyword">if</span> (oldKeyToIdx === <span class="hljs-literal">undefined</span>) &#123;<br>          oldKeyToIdx = <span class="hljs-title function_">createKeyToOldIdx</span>(oldCh, oldStartIdx, oldEndIdx);<br>        &#125;<br>        idxInOld = oldKeyToIdx[newStartVnode.<span class="hljs-property">key</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>];<br>        <span class="hljs-comment">// 没找到真实DOM中有相同的key，那没办法，新建吧</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isUndef</span>(idxInOld)) &#123;<br>          <span class="hljs-comment">// New element</span><br>          api.<span class="hljs-title function_">insertBefore</span>(<br>            parentElm,<br>            <span class="hljs-title function_">createElm</span>(newStartVnode, insertedVnodeQueue),<br>            oldStartVnode.<span class="hljs-property">elm</span>!<br>          );<br>        &#125;<br>        <span class="hljs-comment">// 有相同的key</span><br>        <span class="hljs-keyword">else</span> &#123;<br>          elmToMove = oldCh[idxInOld];<br>          <span class="hljs-comment">// 也要判断一下标签，标签相同才能复用真实DOM</span><br>          <span class="hljs-keyword">if</span> (elmToMove.<span class="hljs-property">sel</span> !== newStartVnode.<span class="hljs-property">sel</span>) &#123;<br>            api.<span class="hljs-title function_">insertBefore</span>(<br>              parentElm,<br>              <span class="hljs-title function_">createElm</span>(newStartVnode, insertedVnodeQueue),<br>              oldStartVnode.<span class="hljs-property">elm</span>!<br>            );<br>          &#125;<br>          <span class="hljs-comment">// 终于可以复用了</span><br>          <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-title function_">patchVnode</span>(elmToMove, newStartVnode, insertedVnodeQueue);<br>            <span class="hljs-comment">// 真实DOM已经更新而且移动完了，那么对应的这个旧虚拟DOM应当被标记成处理完</span><br>            oldCh[idxInOld] = <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>;<br>            api.<span class="hljs-title function_">insertBefore</span>(parentElm, elmToMove.<span class="hljs-property">elm</span>!, oldStartVnode.<span class="hljs-property">elm</span>!);<br>          &#125;<br>        &#125;<br>        newStartVnode = newCh[++newStartIdx];<br>      &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 跳出循环咯，下面就是不得不新建的，或者是不得不删除的</span><br>    <span class="hljs-keyword">if</span> (newStartIdx &lt;= newEndIdx) &#123;<br>      before = newCh[newEndIdx + <span class="hljs-number">1</span>] == <span class="hljs-literal">null</span> ? <span class="hljs-literal">null</span> : newCh[newEndIdx + <span class="hljs-number">1</span>].<span class="hljs-property">elm</span>;<br>      <span class="hljs-title function_">addVnodes</span>(<br>        parentElm,<br>        before,<br>        newCh,<br>        newStartIdx,<br>        newEndIdx,<br>        insertedVnodeQueue<br>      );<br>    &#125;<br>    <span class="hljs-keyword">if</span> (oldStartIdx &lt;= oldEndIdx) &#123;<br>      <span class="hljs-title function_">removeVnodes</span>(parentElm, oldCh, oldStartIdx, oldEndIdx);<br>    &#125;<br>    <span class="hljs-comment">// 真实DOM更新完毕</span><br>  &#125;<br></code></pre>
+
+<p>看起来很复杂，但简单说就是双指针往中间扫描，尽可能不用移动真实 DOM；即使要移动，也尽可能不要循环，直接首尾两端交换；最后才不得不循环找能复用的真实 DOM。<br>这个函数走完，真实 DOM 就变成和新虚拟 DOM 一样的结构了，内容也都更新完毕，Snabbdom diff 算法完结撒花</p>
 <h1 id="虚拟-DOM-的优缺点"><a href="#虚拟-DOM-的优缺点" class="headerlink" title="虚拟 DOM 的优缺点"></a>虚拟 DOM 的优缺点</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
 <li>保证性能下限： 框架的虚拟 DOM 需要适配任何上层 API 可能产生的操作，它的一些 DOM 操作的实现必须是普适的，所以它的性能并不是最优的；但是比起粗暴的 DOM 操作性能要好很多，因此框架的虚拟 DOM 至少可以保证在不需要手动优化的情况下，依然可以提供还不错的性能，即保证性能的下限；</li>
 <li>无需手动操作 DOM： 不再需要手动去操作 DOM，只需要写好 View-Model 的代码逻辑，框架会根据虚拟 DOM 和 数据双向绑定，以可预期的方式更新视图，极大提高开发效率；</li>
@@ -575,8 +590,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://wolf1024hzx.github.io/2023/03/18/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/">
-            https://wolf1024hzx.github.io/2023/03/18/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/
+            href="https://wolf1024hzx.github.io/2023/03/20/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/">
+            https://wolf1024hzx.github.io/2023/03/20/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
@@ -641,8 +656,8 @@
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-03-18</div>
-        <a href="/2023/03/18/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/"><div class="recent-posts-item-content">虚拟DOM学习</div></a>
+        <div class="recent-posts-item-title">2023-03-20</div>
+        <a href="/2023/03/20/%E8%99%9A%E6%8B%9FDOM%E5%AD%A6%E4%B9%A0/"><div class="recent-posts-item-content">虚拟DOM学习</div></a>
       </div>
     
       <div class="recent-posts-item">
