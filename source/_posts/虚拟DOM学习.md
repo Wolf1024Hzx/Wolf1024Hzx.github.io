@@ -1,8 +1,9 @@
 ---
 title: 虚拟DOM学习
 tags: 前端
-date: 2023-03-18 16:53:00
+date: 2023-03-20 16:53:00
 categories: 学习
+banner_img: /img/虚拟DOM学习/Snabbdom/banner.jpg
 ---
 
 # 虚拟 DOM 介绍
@@ -557,7 +558,162 @@ patch(container, vnode)
 
 #### updateChildren 函数——新旧 vnode 都有孩子的情况下更新真实 DOM
 
-未完待续
+为了更好的理解这个函数，我们把 sameVnode 的作用换一个更合适的说法：**如果 sameVnode 的判断为真，就说明 oldVnode 指向的真实 DOM 不需要销毁，只需要改变内容，或者改变位置就可以了**
+
+这个想法非常关键，因为 diff 的最小更新思路，就是通过**尽量不删除真实 DOM**实现的。
+
+既然要真实 DOM 尽可能少销毁，那么平时在使用框架开发时，我们经常对表格的数据进行排序，这一过程就必然只涉及真实 DOM 节点的移动。而真实 DOM 节点的移动通过下面这个 DOM api 实现：
+![insertBefore](/img/虚拟DOM学习/Snabbdom/insertBefore.jpg)
+这个函数接收两个真实 DOM 元素作为参数，调用的节点为父元素，第二个参数是这个父元素的孩子，函数的作用是把第一个参数的节点插入这个父元素中，并插入在第二个参数传入的孩子前，。但值得注意的是，选中的部分已经说明了，如果第一个参数已经存在父节点中，那么**第一个参数传入的节点只会移动位置，而不会新建一个一样的节点**。这就实现了我们需要的移动效果。
+
+接下来，真正开始看这最核心部分的源码，思路过程都在注释里
+
+```TypeScript
+function updateChildren(
+    parentElm: Node,
+    oldCh: VNode[],
+    newCh: VNode[],
+    insertedVnodeQueue: VNodeQueue
+  ) {
+    // 这些指针都是指向当前未处理的节点！！
+    let oldStartIdx = 0;
+    let newStartIdx = 0;
+    let oldEndIdx = oldCh.length - 1;
+    let oldStartVnode = oldCh[0];
+    let oldEndVnode = oldCh[oldEndIdx];
+    let newEndIdx = newCh.length - 1;
+    let newStartVnode = newCh[0];
+    let newEndVnode = newCh[newEndIdx];
+    let oldKeyToIdx: KeyToIndexMap | undefined;
+    let idxInOld: number;
+    let elmToMove: VNode;
+    let before: any;
+
+    // 下面的循环体中的内容，实质上是找到所有可以复用的真实DOM节点（我们的目的就是尽可能复用，少删除少新建），更新他们的内容并插到合适的位置
+    // 如果旧的vnode的待处理节点指针相遇，说明现有的真实DOM已经处理完了，如果新的vnode指针还没相遇，剩下的孩子就都是必须新建真实DOM的了
+    // 如果新的vnode的待处理节点指针相遇，说明真实DOM的两侧已经是我们期待的样子了，中间的真实DOM也就是旧vnode待处理指针之间的，都是必须得删除的
+    // 上述两种情况，都是说明现有的可以复用的真实DOM已经更新复用完了，剩下多出来的必须要删除，缺少的就必须要新建
+    while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
+      // 注意，这里用的不是===，而undefine == null是true
+      if (oldStartVnode == null) {
+        oldStartVnode = oldCh[++oldStartIdx]; // Vnode might have been moved left
+      } else if (oldEndVnode == null) {
+        oldEndVnode = oldCh[--oldEndIdx];
+      } else if (newStartVnode == null) {
+        newStartVnode = newCh[++newStartIdx];
+      } else if (newEndVnode == null) {
+        newEndVnode = newCh[--newEndIdx];
+      }
+      // 下面开始处理，首先我们最希望的的肯定是真实DOM不用删除，也不用移动，就在当前位置更新就好
+      // 所以先看看左侧第一个真实DOM要不要删除或移动
+      else if (sameVnode(oldStartVnode, newStartVnode)) {
+        // 左侧第一个真实DOM可以被复用！那么原地更新就好，当前节点处理完，左侧的待处理指针右移
+        patchVnode(oldStartVnode, newStartVnode, insertedVnodeQueue);
+        oldStartVnode = oldCh[++oldStartIdx];
+        newStartVnode = newCh[++newStartIdx];
+      }
+      // 很遗憾左侧第一个的真实DOM和新的虚拟DOM对不上，也就是说可能要被移动到其他地方或者被删除
+      // 那我们再从右侧判断，看看右侧第一个真实DOM要不要删除或移动
+      else if (sameVnode(oldEndVnode, newEndVnode)) {
+        // 右侧第一个真实DOM可以被复用！那么原地更新就好，当前节点处理完，右侧的待处理指针左移
+        patchVnode(oldEndVnode, newEndVnode, insertedVnodeQueue);
+        oldEndVnode = oldCh[--oldEndIdx];
+        newEndVnode = newCh[--newEndIdx];
+      }
+      // 没办法，左右两侧的真实DOM都和我们期待的样子对不上
+      // 但还可能存在一种情况：
+      // 初始状态 A B C ...... X Y Z
+      // 目标状态 A B U ...... C Y Z
+      // 经过刚刚的两种最简单的判断，左侧的A B和右侧的Y Z都已经更新完
+      // 所以oldStartVnode指向C，oldEndVnode指向X，newStartVnode指向U，newEndVnode指向C
+      // 我们一眼就能看出来C只用换个位置，C插在oldEndVnode的后一项的前面（把X往前挤）就好了
+      // 下面的代码就是干这件事，看看有没有现在最左侧的真实DOM是可以直接移到右侧的
+      // 尽可能少循环，不考虑真实DOM的移动过程的话，这种判断的时间复杂度就是O(1)，
+      else if (sameVnode(oldStartVnode, newEndVnode)) {
+        patchVnode(oldStartVnode, newEndVnode, insertedVnodeQueue);
+        // 移动到oldEndVnode的后一项的前面
+        api.insertBefore(
+          parentElm,
+          oldStartVnode.elm!,
+          api.nextSibling(oldEndVnode.elm!)
+        );
+        // 待处理的指针移动
+        oldStartVnode = oldCh[++oldStartIdx];
+        newEndVnode = newCh[--newEndIdx];
+      }
+      // 同理，和上面的不同方向罢了
+      else if (sameVnode(oldEndVnode, newStartVnode)) {
+        // Vnode moved left
+        patchVnode(oldEndVnode, newStartVnode, insertedVnodeQueue);
+        api.insertBefore(parentElm, oldEndVnode.elm!, oldStartVnode.elm!);
+        oldEndVnode = oldCh[--oldEndIdx];
+        newStartVnode = newCh[++newStartIdx];
+      }
+      // 没办法了，当前真实DOM两端的节点都找不到能复用的位置
+      // 此时待处理指针两侧的真实DOM已经更新，排列成我们希望的样子了（和新的虚拟DOM一样）
+      // 那我们从新虚拟DOM待处理的最左侧节点入手，去循环找有没有 未被复用过，但现在可以拿来复用的真实DOM
+      // 如果有，拿来更新内容，插在oldStartVnode指向的真实DOM的前面就好了（因为新的虚拟DOM期待它在当前未处理的最左侧）
+      // 记得把被复用的这个真实DOM对应的oldVnode标记为已经复用过，设置成undefine就好了，经过上面undefnie == null的判断会被过滤掉
+      // 如果没有可以复用的真实DOM，只好新建了，还是插在oldStartVnode指向的真实DOM的前面
+      else {
+        // 这里判断是否可以复用，只与key、孩子的标签有关，都相同就可以复用
+        if (oldKeyToIdx === undefined) {
+          oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx);
+        }
+        idxInOld = oldKeyToIdx[newStartVnode.key as string];
+        // 没找到真实DOM中有相同的key，那没办法，新建吧
+        if (isUndef(idxInOld)) {
+          // New element
+          api.insertBefore(
+            parentElm,
+            createElm(newStartVnode, insertedVnodeQueue),
+            oldStartVnode.elm!
+          );
+        }
+        // 有相同的key
+        else {
+          elmToMove = oldCh[idxInOld];
+          // 也要判断一下标签，标签相同才能复用真实DOM
+          if (elmToMove.sel !== newStartVnode.sel) {
+            api.insertBefore(
+              parentElm,
+              createElm(newStartVnode, insertedVnodeQueue),
+              oldStartVnode.elm!
+            );
+          }
+          // 终于可以复用了
+          else {
+            patchVnode(elmToMove, newStartVnode, insertedVnodeQueue);
+            // 真实DOM已经更新而且移动完了，那么对应的这个旧虚拟DOM应当被标记成处理完
+            oldCh[idxInOld] = undefined as any;
+            api.insertBefore(parentElm, elmToMove.elm!, oldStartVnode.elm!);
+          }
+        }
+        newStartVnode = newCh[++newStartIdx];
+      }
+    }
+
+    // 跳出循环咯，下面就是不得不新建的，或者是不得不删除的
+    if (newStartIdx <= newEndIdx) {
+      before = newCh[newEndIdx + 1] == null ? null : newCh[newEndIdx + 1].elm;
+      addVnodes(
+        parentElm,
+        before,
+        newCh,
+        newStartIdx,
+        newEndIdx,
+        insertedVnodeQueue
+      );
+    }
+    if (oldStartIdx <= oldEndIdx) {
+      removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);
+    }
+    // 真实DOM更新完毕
+  }
+```
+
+看起来很复杂，但简单说就是双指针往中间扫描，尽可能不用移动真实 DOM；即使要移动，也尽可能不要循环，直接首尾两端交换；最后才不得不循环找能复用的真实 DOM。
+这个函数走完，真实 DOM 就变成和新虚拟 DOM 一样的结构了，内容也都更新完毕，Snabbdom diff 算法完结撒花
 
 # 虚拟 DOM 的优缺点
 
