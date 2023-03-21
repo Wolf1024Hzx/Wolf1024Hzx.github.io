@@ -715,6 +715,10 @@ function updateChildren(
 看起来很复杂，但简单说就是双指针往中间扫描，尽可能不用移动真实 DOM；即使要移动，也尽可能不要循环，直接首尾两端交换；最后才不得不循环找能复用的真实 DOM。
 这个函数走完，真实 DOM 就变成和新虚拟 DOM 一样的结构了，内容也都更新完毕，Snabbdom diff 算法完结撒花
 
+## Snabbdom 完整源码带注释
+
+[Snabbdom 完整源码带注释](/static/Snabbdom源码ts加注释版.rar)
+
 # 虚拟 DOM 的优缺点
 
 ## 优点
