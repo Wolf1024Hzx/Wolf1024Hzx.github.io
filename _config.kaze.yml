@@ -199,10 +199,11 @@ wordcount:
   enable: true
 # Analytics config
 analytics:
-  enable: false
+  enable: true
   type: google # google
-  google:
-    id: # you can see more information in https://analytics.google.com/
+  google: 
+    id: G-N63VB327E3
+    # you can see more information in https://analytics.google.com/
 # Doc：https://artitalk.js.org/
 artitalk:
   enable: false
