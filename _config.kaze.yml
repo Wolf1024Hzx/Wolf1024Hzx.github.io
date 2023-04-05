@@ -96,10 +96,10 @@ footer:
     enable: false
     type: busuanzi # now version only supports busuanzi
     pv:
-      enable: false
+      enable: true
       style: 本站总访问量{}次 # the style will be shown as $1{pv}$2
     uv:
-      enable: false
+      enable: true
       style: 本站总访客数{}次 # the style will be shown as $1{uv}$2
 
 widgets:
