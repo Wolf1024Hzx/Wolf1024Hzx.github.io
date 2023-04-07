@@ -1,3 +1,4 @@
+---
 #------------------------
 # Header config
 title: 小狼的小窝
@@ -40,6 +41,15 @@ links:
     url: https://github.com/muzhiLL
     avatar: https://avatars.githubusercontent.com/u/113877100?v=4
     description: 枝木
+  JatNaam:
+    url: https://github.com/JatNaam
+    avatar: https://avatars.githubusercontent.com/u/100589530?v=4
+    description: 人民公仆
+  programmerSuH:
+    url: https://github.com/programmerSuH
+    avatar: https://avatars.githubusercontent.com/u/125527445?v=4
+    description: CSDN ‘胶己人’，哲学大师
+  
   #------------------------
   # tip: if you want to use QQ avatar without giving away your QQ number,
   # you can use this api to get an encrypted url:
@@ -59,7 +69,7 @@ copyright:
   enable: true
   writer: # if writer is empty we will use config.author as writer
   declare: 本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！
-  style: warning # the style uses note warning | danger | primary | info | success
+  style: success # the style uses note warning | danger | primary | info | success
 
 search:
   enable: true
@@ -86,9 +96,9 @@ footer:
   #------------------------
   # Record config
   # please put the gov image in ${yoursite}/img/beian.png
-  RecordInfo: "" # your Record info such as '某ICP备xxx号'
-  govRecordInfo: "" # your gov record info such as '某公网安备xxx号'
-  govRecordUrl: "" # your gov record url
+  RecordInfo: '' # your Record info such as '某ICP备xxx号'
+  govRecordInfo: '' # your gov record info such as '某公网安备xxx号'
+  govRecordUrl: '' # your gov record url
   #------------------------
   # pv / uv statistics config
   #------------------------
@@ -103,7 +113,7 @@ footer:
       style: 本站总访客数{}次 # the style will be shown as $1{uv}$2
 
 widgets:
-  showWidgetsMobiles: "none"
+  showWidgetsMobiles: 'none'
 #------------------------
 # animation config
 #------------------------
@@ -124,7 +134,7 @@ comment:
     placeholder: Just go go
     path: window.location.pathname
     avatar: mp
-    meta: ["nick", "mail", "link"]
+    meta: ['nick', 'mail', 'link']
     pageSize: 10
     visitor: false
     highlight: true
@@ -152,7 +162,7 @@ comment:
     serverURL:
     path: window.location.pathname
     avatar: mp
-    meta: ["nick", "mail", "link"]
+    meta: ['nick', 'mail', 'link']
     requiredMeta: []
     lang: zh-CN
     dark: html[data-user-color-scheme="dark"]
@@ -201,14 +211,14 @@ wordcount:
 analytics:
   enable: true
   type: google # google
-  google: 
+  google:
     id: G-N63VB327E3
     # you can see more information in https://analytics.google.com/
 # Doc：https://artitalk.js.org/
 artitalk:
   enable: false
-  appId: 
-  appKey: 
+  appId:
+  appKey:
 #------------------------
 # minify config
 # css minify uses autoprefixer and clean-css
@@ -226,20 +236,20 @@ minify:
 # the config of theme colors and styles
 # you can modify these presets to design different styles
 color:
-  text-color: "#3c4858"
-  text-strong-color: "#2f3d4e"
-  text-light-color: "#60656a"
-  divider-color: "#e6e8ee"
-  title-color: "#475b6d"
-  link-color: "#3273dc"
-  link-hover-color: "#6596e5"
-  info-text-color: "#60656a"
-  widget-background-color: "#fff"
-  body-background-color: "#f2f5f8"
-  border-color: "#e1e4e9"
-  pre-color: "#2d2d2d"
-  code-color: "#50687c"
-  code-background-color: "#e9eaf0"
+  text-color: '#3c4858'
+  text-strong-color: '#2f3d4e'
+  text-light-color: '#60656a'
+  divider-color: '#e6e8ee'
+  title-color: '#475b6d'
+  link-color: '#3273dc'
+  link-hover-color: '#6596e5'
+  info-text-color: '#60656a'
+  widget-background-color: '#fff'
+  body-background-color: '#f2f5f8'
+  border-color: '#e1e4e9'
+  pre-color: '#2d2d2d'
+  code-color: '#50687c'
+  code-background-color: '#e9eaf0'
 
 font:
   font-size: 15px # global font-size
@@ -256,7 +266,7 @@ cdn:
     js: //cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js
   valine: //unpkg.com/valine/dist/Valine.min.js
   livere: //cdn-city.livere.com/js/embed.dist.js
-  waline: 
+  waline:
     js: //unpkg.com/@waline/client@v2/dist/waline.js
     css: //unpkg.com/@waline/client@v2/dist/waline.css
   baguetteBox: /js/lib/lightbox
