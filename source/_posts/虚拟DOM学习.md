@@ -4,6 +4,7 @@ tags: 前端
 date: 2023-03-20 16:53:00
 categories: 学习
 banner_img: /img/虚拟DOM学习/Snabbdom/banner.jpg
+index_img: /img/虚拟DOM学习/Snabbdom/banner.jpg
 ---
 
 # 虚拟 DOM 介绍
