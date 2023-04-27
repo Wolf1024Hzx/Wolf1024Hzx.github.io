@@ -16,22 +16,27 @@
   <meta name="author" content="wolf1024hzx">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="参考博客第一篇第二篇 但能搜到的基本都使用宝塔面板，实在不想装宝塔，因此自己配置 nginx 前期准备nodejs 环境首先搭建 nodejs 环境，使用 nvm 工具安装指定版本 先安装nvm 工具，版本随意，一路 next 安装即可 安装完毕后，打开 cmd，使用 nvm install 指令安装指定版本的 nodejs 1nvm install 18.15.0  然后用 nvm list 查">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://wolf1024hzx.github.io/2023/03/10/hello-world/index.html">
+<meta property="og:title" content="hexo博客部署到服务器">
+<meta property="og:url" content="https://wolf1024hzx.github.io/2023/04/27/hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="小狼的小窝">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="参考博客第一篇第二篇 但能搜到的基本都使用宝塔面板，实在不想装宝塔，因此自己配置 nginx 前期准备nodejs 环境首先搭建 nodejs 环境，使用 nvm 工具安装指定版本 先安装nvm 工具，版本随意，一路 next 安装即可 安装完毕后，打开 cmd，使用 nvm install 指令安装指定版本的 nodejs 1nvm install 18.15.0  然后用 nvm list 查">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-10T12:09:09.000Z">
-<meta property="article:modified_time" content="2023-04-25T08:58:29.705Z">
+<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427101039_5dc369d056bbbc7ac8316ae067fe4404.png">
+<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102305_00b7997bf33985c6a968ba39c4fd645b.png">
+<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102823_23efa619fdd0fbcc0a104f4f31b0b713.png">
+<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427103554_c9225616c51a533fdaf9f271f3c310c4.png">
+<meta property="article:published_time" content="2023-04-27T03:06:04.000Z">
+<meta property="article:modified_time" content="2023-04-27T03:06:49.616Z">
 <meta property="article:author" content="wolf1024hzx">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427101039_5dc369d056bbbc7ac8316ae067fe4404.png">
   
   
   
-  <title>Hello World - 小狼的小窝</title>
+  <title>hexo博客部署到服务器 - 小狼的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="hexo博客部署到服务器"></span>
           
         </div>
 
@@ -208,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-10 20:09" pubdate>
-          2023年3月10日 晚上
+        <time datetime="2023-04-27 11:06" pubdate>
+          2023年4月27日 上午
         </time>
       </span>
     
@@ -220,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          1.8k 字
         
       </span>
     
@@ -231,7 +236,7 @@
         
         
         
-          4 分钟
+          16 分钟
         
       </span>
     
@@ -269,24 +274,94 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">hexo博客部署到服务器</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38733240/article/details/108140565?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-108140565-blog-124471586.235%5Ev32%5Epc_relevant_default_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-108140565-blog-124471586.235%5Ev32%5Epc_relevant_default_base&utm_relevant_index=2">第一篇</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013190417/article/details/122694959">第二篇</a></p>
+<p>但能搜到的基本都使用宝塔面板，实在不想装宝塔，因此自己配置 nginx</p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h2 id="nodejs-环境"><a href="#nodejs-环境" class="headerlink" title="nodejs 环境"></a>nodejs 环境</h2><p>首先搭建 nodejs 环境，使用 nvm 工具安装指定版本</p>
+<p>先安装<a target="_blank" rel="noopener" href="https://nvm.uihtm.com/download.html">nvm 工具</a>，版本随意，一路 next 安装即可</p>
+<p>安装完毕后，打开 cmd，使用 nvm install 指令安装指定版本的 nodejs</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvm install 18.15.0<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>然后用 nvm list 查看是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvm list<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>看到版本号前的星号就表示安装成功，并且当前使用该版本</p>
+<p><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427101039_5dc369d056bbbc7ac8316ae067fe4404.png" srcset="/img/loading.gif" lazyload alt="nvm list结果"></p>
+<p>nvm 工具管理 nodejs 版本非常方便，其他指令可自行查询</p>
+<h2 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">hexo 官网</a>，按照文档做即可创建博客项目，并轻松部署到 Github 上</p>
+<h1 id="部署到服务器"><a href="#部署到服务器" class="headerlink" title="部署到服务器"></a>部署到服务器</h1><h2 id="配置-SSH-密钥"><a href="#配置-SSH-密钥" class="headerlink" title="配置 SSH 密钥"></a>配置 SSH 密钥</h2><p>能部署到 Github，SSH 密钥应该已经生成了，直接用已经生成过的好了，在 git bash 中查看公钥：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102305_00b7997bf33985c6a968ba39c4fd645b.png" srcset="/img/loading.gif" lazyload alt="cat ~/.ssh/id_rsa.pub"></p>
+<p>把这一串，包括 ssh-rsa 的开头复制出来，待会用</p>
+<p>登录到服务器，安装 git</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt install git<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>然后创建一个 git 用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">adduser git<br></code></pre></td></tr></table></figure>
+
+<p>添加 git 用户权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 740 /etc/sudoers<br>vim /etc/sudoers<br></code></pre></td></tr></table></figure>
+
+<p>在 vim 中修改 git 用户权限如下：</p>
+<p><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102823_23efa619fdd0fbcc0a104f4f31b0b713.png" srcset="/img/loading.gif" lazyload alt="修改git用户权限"></p>
+<p>把 sudoers 文件的权限改回来</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 400 /etc/sudoers<br></code></pre></td></tr></table></figure>
+
+<p>设置 git 用户的密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">passwd git<br></code></pre></td></tr></table></figure>
+
+<p>切换至 git 用户，然后把我们刚刚复制的公钥放到服务器上<br>先在 git 用户目录下创建文件夹和指定文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">su git<br>cd ~<br>mkdir .ssh<br>vim .ssh/authorized_keys<br></code></pre></td></tr></table></figure>
+
+<p>在文本编辑器中，把我们的公钥粘贴进去，这个文件可以存放多个公钥：<br><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427103554_c9225616c51a533fdaf9f271f3c310c4.png" srcset="/img/loading.gif" lazyload alt="用换行分隔"></p>
+<p>保存退出后验证一下是否配置成功，用以下指令，再输入 yes，若不用密码能连接上服务器，说明 ssh 密钥配置成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -v git@服务器ip<br></code></pre></td></tr></table></figure>
+
+<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>用 root 用户创建一个仓库目录用于存放 hexo 部署时上传的代码，其实放哪都行，但所有参考博客都放 var 下，也跟着做了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /var/repo<br></code></pre></td></tr></table></figure>
+
+<p>给 git 用户赋予访问权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chown -R git:git /var/repo<br>chmod -R 755 /var/repo<br></code></pre></td></tr></table></figure>
+
+<p>在这个目录下创建 git 仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /var/repo<br>git init --bare hexo.git<br></code></pre></td></tr></table></figure>
+
+<p>创建一个 git 钩子，用于自动部署</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vim /var/repo/hexo.git/hooks/post-receive<br></code></pre></td></tr></table></figure>
+
+<p>该文件中写入以下脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>git --work-tree=/var/hexo --git-dir=/var/repo/hexo.git checkout -f<br></code></pre></td></tr></table></figure>
+
+<p>给这个钩子文件赋予权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chown -R git:git /var/repo/hexo.git/hooks/post-receive<br>chmod +x /var/repo/hexo.git/hooks/post-receive<br></code></pre></td></tr></table></figure>
+
+<p>创建 hexo 目录，作为 hexo 打包后存放的目录，也就是 nginx 配置中网站的根目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /var/hexo<br>chown -R git:git /var/hexo<br>chmod -R 755 /var/hexo<br></code></pre></td></tr></table></figure>
+
+<p>仓库创建配置完成</p>
+<h2 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h2><p>刚刚提到过，hexo 目录，作为 hexo 打包后存放的目录，也就是 nginx 配置中网站的根目录</p>
+<p>在 nginx 配置文件中：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">server &#123;<br>    listen      80;<br>    server_name FrontEndServer;<br>    location /xxx &#123;<br>        alias /var/hexo;<br>        index index.html;<br>        try_files $uri $uri/ /xxx/index.html;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>重新加载配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
+
+<h2 id="修改-hexo-配置文件"><a href="#修改-hexo-配置文件" class="headerlink" title="修改 hexo 配置文件"></a>修改 hexo 配置文件</h2><p>修改关于部署的部分</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@服务器ip或域名:/var/repo/hexo.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span><br></code></pre></td></tr></table></figure>
+
+<p>但只改这部分，打包好后的 html 中引用的 css、js 文件都在服务器根目录下，显然这会找不到资源，因此配置_config.yml 中的网站根路径</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">url:</span> <span class="hljs-string">http(s)://域名/xxx</span><br><span class="hljs-attr">root:</span> <span class="hljs-string">/xxx/</span><br></code></pre></td></tr></table></figure>
+
+<p>xxx 和 nginx 中配置的访问路径对应</p>
+<h2 id="安装-hexo-部署插件"><a href="#安装-hexo-部署插件" class="headerlink" title="安装 hexo 部署插件"></a>安装 hexo 部署插件</h2><p>有些主题不一定包含 hexo-deployer-git 插件，因此安装一下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm i hexo-deployer-git<br></code></pre></td></tr></table></figure>
+
+<h2 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h2><p>使用<code>hexo d -g</code>，快速将本地博客部署到服务器<br>done.</p>
 
                 
               </div>
@@ -332,8 +407,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://wolf1024hzx.github.io/2023/03/10/hello-world/</div>
+      <div>hexo博客部署到服务器</div>
+      <div>https://wolf1024hzx.github.io/2023/04/27/hexo博客部署到服务器/</div>
     </div>
     <div class="license-meta">
       
@@ -345,7 +420,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月10日</div>
+          <div>2023年4月27日</div>
         </div>
       
       
@@ -377,15 +452,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/11/Springboot%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/" title="Springboot实现数据库读写分离">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Springboot实现数据库读写分离</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/04/05/%E9%9D%A2%E8%AF%95%E4%B8%8D%E8%B6%B3/" title="面试官给您跪下了qaq">
+                        <span class="hidden-mobile">面试官给您跪下了qaq</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
