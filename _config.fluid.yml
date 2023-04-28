@@ -40,7 +40,7 @@ static_prefix:
   waline: https://lib.baomitu.com/waline/2.14.1/
   gitalk: https://lib.baomitu.com/gitalk/1.8.0/
   disqusjs: https://lib.baomitu.com/disqusjs/1.3.0/
-  twikoo: https://lib.baomitu.com/twikoo/1.6.16/
+  twikoo: https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js
   hint: https://lib.baomitu.com/hint.css/2.7.0/
 
 title: 小狼的小窝
