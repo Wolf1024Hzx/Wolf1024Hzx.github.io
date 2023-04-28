@@ -9,6 +9,13 @@ index:
     enable: true
 navbar:
   blog_title: 小狼的小窝
+post:
+  comments:
+    enable: true
+    type: twikoo
+twikoo:
+  envId: https://114.132.180.125/twi
+  region: ap-guangzhou
 title: 小狼的小窝
 author: 小狼
 logo_img: /img/github.png
