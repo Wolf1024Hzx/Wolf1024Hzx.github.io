@@ -16,6 +16,7 @@ post:
 twikoo:
   envId: https://wolfandqiaoqiao.love/twi
   region: ap-guangzhou
+  version: 1.6.16
 title: 小狼的小窝
 author: 小狼
 logo_img: /img/github.png
