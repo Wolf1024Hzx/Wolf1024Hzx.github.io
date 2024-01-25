@@ -16,24 +16,22 @@
   <meta name="author" content="wolf1024hzx">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="问题描述在过去的实习和项目开发经历中，规范的大项目都是使用 vue2，因此习惯了使用 webpack 的 require.context 批量导入模块。但最近学习使用 vite + taildwindcss 进行开发时想起来 vite 没有这个接口，因此找办法代替 目录结构 webpack 写法12345678910111213141516171819202122&#x2F;&#x2F; index.jsimport">
+    <meta name="description" content="以前使用不当，使得电脑上有多个ssh密钥对在不同的位置，连接github等仓库时不知道使用的哪一个密钥对 在~&#x2F;.ssh下新建config文件，内容设置为: 12345# Default github user selfHost github.com	port 22	HostName ssh.github.com	IdentityFile ~&#x2F;.ssh&#x2F;id_rsa  搞定">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vite模块化加载store和接口">
-<meta property="og:url" content="https://wolf1024hzx.github.io/2023/03/11/vite%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8A%A0%E8%BD%BDstore%E5%92%8C%E6%8E%A5%E5%8F%A3/index.html">
+<meta property="og:title" content="指定git使用某个ssh私钥">
+<meta property="og:url" content="https://wolf1024hzx.github.io/2024/01/25/%E6%8C%87%E5%AE%9Agit%E4%BD%BF%E7%94%A8%E6%9F%90%E4%B8%AAssh%E7%A7%81%E9%92%A5/index.html">
 <meta property="og:site_name" content="小狼的小窝">
-<meta property="og:description" content="问题描述在过去的实习和项目开发经历中，规范的大项目都是使用 vue2，因此习惯了使用 webpack 的 require.context 批量导入模块。但最近学习使用 vite + taildwindcss 进行开发时想起来 vite 没有这个接口，因此找办法代替 目录结构 webpack 写法12345678910111213141516171819202122&#x2F;&#x2F; index.jsimport">
+<meta property="og:description" content="以前使用不当，使得电脑上有多个ssh密钥对在不同的位置，连接github等仓库时不知道使用的哪一个密钥对 在~&#x2F;.ssh下新建config文件，内容设置为: 12345# Default github user selfHost github.com	port 22	HostName ssh.github.com	IdentityFile ~&#x2F;.ssh&#x2F;id_rsa  搞定">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wolf1024hzx.github.io/img/vite%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8A%A0%E8%BD%BDstore%E5%92%8C%E6%8E%A5%E5%8F%A3/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg">
-<meta property="article:published_time" content="2023-03-11T13:40:45.000Z">
+<meta property="article:published_time" content="2024-01-25T05:53:08.000Z">
 <meta property="article:modified_time" content="2024-01-25T05:57:05.766Z">
 <meta property="article:author" content="wolf1024hzx">
-<meta property="article:tag" content="前端">
+<meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://wolf1024hzx.github.io/img/vite%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8A%A0%E8%BD%BDstore%E5%92%8C%E6%8E%A5%E5%8F%A3/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg">
   
   
   
-  <title>vite模块化加载store和接口 - 小狼的小窝</title>
+  <title>指定git使用某个ssh私钥 - 小狼的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vite模块化加载store和接口"></span>
+            <span id="subtitle" data-typed-text="指定git使用某个ssh私钥"></span>
           
         </div>
 
@@ -210,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-11 21:40" pubdate>
-          2023年3月11日 晚上
+        <time datetime="2024-01-25 13:53" pubdate>
+          2024年1月25日 下午
         </time>
       </span>
     
@@ -222,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          178 字
         
       </span>
     
@@ -233,7 +231,7 @@
         
         
         
-          9 分钟
+          2 分钟
         
       </span>
     
@@ -271,18 +269,16 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">vite模块化加载store和接口</h1>
+            <h1 style="display: none">指定git使用某个ssh私钥</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在过去的实习和项目开发经历中，规范的大项目都是使用 vue2，因此习惯了使用 webpack 的 require.context 批量导入模块。<br>但最近学习使用 vite + taildwindcss 进行开发时想起来 vite 没有这个接口，因此找办法代替</p>
-<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="/img/vite%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8A%A0%E8%BD%BDstore%E5%92%8C%E6%8E%A5%E5%8F%A3/%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg" srcset="/img/loading.gif" lazyload alt="store缓存文件结构"></p>
-<h2 id="webpack-写法"><a href="#webpack-写法" class="headerlink" title="webpack 写法"></a>webpack 写法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// index.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vuex</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">Vuex</span>)<br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">devtools</span> = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 打开vue调试工具</span><br><span class="hljs-keyword">const</span> files = <span class="hljs-built_in">require</span>.<span class="hljs-title function_">context</span>(<span class="hljs-string">&#x27;./modules&#x27;</span>, <span class="hljs-literal">false</span>, <span class="hljs-regexp">/\.js$/</span>)<br><span class="hljs-keyword">const</span> modules = &#123;&#125;<br><br>files.<span class="hljs-title function_">keys</span>().<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>  modules[key.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(\.\/|\.js)/g</span>, <span class="hljs-string">&#x27;&#x27;</span>)] = <span class="hljs-title function_">files</span>(key).<span class="hljs-property">default</span><br>&#125;)<br><br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(modules).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>  modules[key][<span class="hljs-string">&#x27;namespaced&#x27;</span>] = <span class="hljs-literal">true</span><br>&#125;)<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vuex</span>.<span class="hljs-title class_">Store</span>(&#123;<br>  modules<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store<br></code></pre></td></tr></table></figure>
+                <p>以前使用不当，使得电脑上有多个ssh密钥对在不同的位置，连接github等仓库时不知道使用的哪一个密钥对</p>
+<p>在~&#x2F;.ssh下新建config文件，内容设置为:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># Default github user self</span><br>Host github.com<br>	port <span class="hljs-number">22</span><br>	HostName ssh.github.com<br>	IdentityFile ~<span class="hljs-regexp">/.ssh/i</span>d_rsa<br></code></pre></td></tr></table></figure>
 
-<h2 id="vite-写法"><a href="#vite-写法" class="headerlink" title="vite 写法"></a>vite 写法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// index.js</span><br><span class="hljs-keyword">import</span> &#123; createStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br><span class="hljs-keyword">const</span> routeFiles = <span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-title function_">globEager</span>(<span class="hljs-string">&#x27;@/store/modules/*.js&#x27;</span>)<br><br><span class="hljs-keyword">const</span> modules = &#123;&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> path <span class="hljs-keyword">in</span> routeFiles) &#123;<br>  <span class="hljs-keyword">const</span> key = path.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\/src\/store\/modules\/(.*?).js/</span>)[<span class="hljs-number">1</span>]<br>  modules[key] = routeFiles[path].<span class="hljs-property">default</span><br>  modules[key][<span class="hljs-string">&#x27;namespaced&#x27;</span>] = <span class="hljs-literal">true</span><br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">createStore</span>(&#123;<br>  modules<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>问题解决</p>
+<p>搞定</p>
 
                 
               </div>
@@ -316,7 +312,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+        <a href="/tags/%E5%85%B6%E4%BB%96/">#其他</a>
       
     </div>
   
@@ -328,8 +324,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vite模块化加载store和接口</div>
-      <div>https://wolf1024hzx.github.io/2023/03/11/vite模块化加载store和接口/</div>
+      <div>指定git使用某个ssh私钥</div>
+      <div>https://wolf1024hzx.github.io/2024/01/25/指定git使用某个ssh私钥/</div>
     </div>
     <div class="license-meta">
       
@@ -341,7 +337,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月11日</div>
+          <div>2024年1月25日</div>
         </div>
       
       
@@ -373,18 +369,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/13/webpack%E5%AD%A6%E4%B9%A0/" title="webpack简易笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">webpack简易笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/11/Springboot%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/" title="Springboot实现数据库读写分离">
-                        <span class="hidden-mobile">Springboot实现数据库读写分离</span>
+                      <a href="/2023/04/27/hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="hexo博客部署到服务器">
+                        <span class="hidden-mobile">hexo博客部署到服务器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
