@@ -14,3 +14,6 @@ git clone https://github.com/vuejs/vue.git
 ```
 
 ![使用腾讯云COS搭建图床\20230426201443_c2fc5169e2f9830b624203269a20f153.png](https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91COS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%5C20230426201443_c2fc5169e2f9830b624203269a20f153.png)
+
+npm config set proxy http://127.0.0.1:7890
+npm config set https-proxy http://127.0.0.1:7890
