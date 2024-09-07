@@ -16,27 +16,39 @@
   <meta name="author" content="wolf1024hzx">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="参考博客第一篇第二篇 但能搜到的基本都使用宝塔面板，实在不想装宝塔，因此自己配置 nginx 前期准备nodejs 环境首先搭建 nodejs 环境，使用 nvm 工具安装指定版本 先安装nvm 工具，版本随意，一路 next 安装即可 安装完毕后，打开 cmd，使用 nvm install 指令安装指定版本的 nodejs 1nvm install 18.15.0  然后用 nvm list 查">
+    <meta name="description" content="云打包访问 DCloud 官网个人主页 绑定手机号完成验证 在 HBuilder 中打开项目的 manifest.json ，填写 AppID （没有则点重新获取，同一项目仅获取一次） 点击“发行”-&gt;“原生App-云打包”  等待即可（期间可能会自动下载所需插件，如 scss 和 less 的编译插件等） 打包完成后即可点击链接下载 apk 本地打包本地环境首先装 Java 环境， JDK">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo博客部署到服务器">
-<meta property="og:url" content="https://wolf1024hzx.github.io/2023/04/27/hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:title" content="Uniapp打包安卓apk流程记录">
+<meta property="og:url" content="https://wolf1024hzx.github.io/2024/09/07/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="小狼的小窝">
-<meta property="og:description" content="参考博客第一篇第二篇 但能搜到的基本都使用宝塔面板，实在不想装宝塔，因此自己配置 nginx 前期准备nodejs 环境首先搭建 nodejs 环境，使用 nvm 工具安装指定版本 先安装nvm 工具，版本随意，一路 next 安装即可 安装完毕后，打开 cmd，使用 nvm install 指令安装指定版本的 nodejs 1nvm install 18.15.0  然后用 nvm list 查">
+<meta property="og:description" content="云打包访问 DCloud 官网个人主页 绑定手机号完成验证 在 HBuilder 中打开项目的 manifest.json ，填写 AppID （没有则点重新获取，同一项目仅获取一次） 点击“发行”-&gt;“原生App-云打包”  等待即可（期间可能会自动下载所需插件，如 scss 和 less 的编译插件等） 打包完成后即可点击链接下载 apk 本地打包本地环境首先装 Java 环境， JDK">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427101039_5dc369d056bbbc7ac8316ae067fe4404.png">
-<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102305_00b7997bf33985c6a968ba39c4fd645b.png">
-<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102823_23efa619fdd0fbcc0a104f4f31b0b713.png">
-<meta property="og:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427103554_c9225616c51a533fdaf9f271f3c310c4.png">
-<meta property="article:published_time" content="2023-04-27T03:06:04.000Z">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E4%BA%91%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20112256.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20113926.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114233.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114347.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114702.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114751.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115000.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115304.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115523.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115747.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20120221.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20121303.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20121514.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20121805.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20122035.png">
+<meta property="og:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20122143.png">
+<meta property="article:published_time" content="2024-09-07T08:51:08.000Z">
 <meta property="article:modified_time" content="2024-09-07T08:54:07.481Z">
 <meta property="article:author" content="wolf1024hzx">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427101039_5dc369d056bbbc7ac8316ae067fe4404.png">
+<meta name="twitter:image" content="https://wolf1024hzx.github.io/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E4%BA%91%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20112256.png">
   
   
   
-  <title>hexo博客部署到服务器 - 小狼的小窝</title>
+  <title>Uniapp打包安卓apk流程记录 - 小狼的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo博客部署到服务器"></span>
+            <span id="subtitle" data-typed-text="Uniapp打包安卓apk流程记录"></span>
           
         </div>
 
@@ -213,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-27 11:06" pubdate>
-          2023年4月27日 上午
+        <time datetime="2024-09-07 16:51" pubdate>
+          2024年9月7日 下午
         </time>
       </span>
     
@@ -225,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1.7k 字
         
       </span>
     
@@ -236,7 +248,7 @@
         
         
         
-          16 分钟
+          15 分钟
         
       </span>
     
@@ -274,94 +286,63 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">hexo博客部署到服务器</h1>
+            <h1 style="display: none">Uniapp打包安卓apk流程记录</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38733240/article/details/108140565?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-108140565-blog-124471586.235%5Ev32%5Epc_relevant_default_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-108140565-blog-124471586.235%5Ev32%5Epc_relevant_default_base&utm_relevant_index=2">第一篇</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013190417/article/details/122694959">第二篇</a></p>
-<p>但能搜到的基本都使用宝塔面板，实在不想装宝塔，因此自己配置 nginx</p>
-<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h2 id="nodejs-环境"><a href="#nodejs-环境" class="headerlink" title="nodejs 环境"></a>nodejs 环境</h2><p>首先搭建 nodejs 环境，使用 nvm 工具安装指定版本</p>
-<p>先安装<a target="_blank" rel="noopener" href="https://nvm.uihtm.com/download.html">nvm 工具</a>，版本随意，一路 next 安装即可</p>
-<p>安装完毕后，打开 cmd，使用 nvm install 指令安装指定版本的 nodejs</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvm install 18.15.0<br></code></pre></td></tr></table></figure>
+                <h1 id="云打包"><a href="#云打包" class="headerlink" title="云打包"></a>云打包</h1><p>访问 <a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/account/setting/profile/">DCloud 官网个人主页</a> 绑定手机号完成验证</p>
+<p>在 HBuilder 中打开项目的 manifest.json ，填写 AppID （没有则点重新获取，同一项目仅获取一次）</p>
+<p>点击“发行”-&gt;“原生App-云打包”</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E4%BA%91%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20112256.png" srcset="/img/loading.gif" lazyload alt="云打包截图"></p>
+<p>等待即可（期间可能会自动下载所需插件，如 scss 和 less 的编译插件等）</p>
+<p>打包完成后即可点击链接下载 apk</p>
+<h1 id="本地打包"><a href="#本地打包" class="headerlink" title="本地打包"></a>本地打包</h1><h2 id="本地环境"><a href="#本地环境" class="headerlink" title="本地环境"></a>本地环境</h2><p>首先装 Java 环境， JDK 版本不建议过低，亲测 21.0.4 的 LTS 可以用</p>
+<p>安装 android studio 的旧版本（新版本似乎仅支持 Kotlin ），可以在 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/archive">AS 旧版本列表</a> 中下载旧版本</p>
+<p>推荐 4.2.2 ，<a target="_blank" rel="noopener" href="https://redirector.gvt1.com/edgedl/android/studio/install/4.2.2.0/android-studio-ide-202.7486908-windows.exe">下载链接</a></p>
+<h2 id="uniapp-官方-SDK"><a href="#uniapp-官方-SDK" class="headerlink" title="uniapp 官方 SDK"></a>uniapp 官方 SDK</h2><p><a target="_blank" rel="noopener" href="https://nativesupport.dcloud.net.cn/AppDocs/download/android.html">官方 SDK 下载链接</a></p>
+<p>下载后打开目录，结构如下图所示：</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20113926.png" srcset="/img/loading.gif" lazyload alt="uniapp sdk 目录结构"></p>
+<p>仅需用到 HBuilder-Integrate-AS</p>
+<p>使用 android studio 打开 HBuilder-Integrate-AS 项目</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114233.png" srcset="/img/loading.gif" lazyload alt="HBuilder-Integrate-AS"></p>
+<p>左上角把视图改为 Project</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114347.png" srcset="/img/loading.gif" lazyload alt="项目视图"></p>
+<p>配置 Project Structure 为项目指定 JDK 和 SDK version</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114702.png" srcset="/img/loading.gif" lazyload alt="Project Structure 1"></p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20114751.png" srcset="/img/loading.gif" lazyload alt="Project Structure 2"></p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115000.png" srcset="/img/loading.gif" lazyload alt="Project Structure 3"></p>
+<h2 id="开始打包"><a href="#开始打包" class="headerlink" title="开始打包"></a>开始打包</h2><p>打开 HBuilder ，将 uniapp 项目生成本地打包资源</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115304.png" srcset="/img/loading.gif" lazyload alt="生成本地打包资源"></p>
+<p>将生成的 __UNI__APPID 目录移入 HBuilder-Integrate-AS 项目中对应的位置上</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115523.png" srcset="/img/loading.gif" lazyload alt="插入 uniapp 打包资源"></p>
+<p>替换 dcloud_control.xml 中的 AppId （没改动则不需要替换）</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20115747.png" srcset="/img/loading.gif" lazyload alt="替换 AppId"></p>
+<h2 id="获取-AppKey-和签名"><a href="#获取-AppKey-和签名" class="headerlink" title="获取 AppKey 和签名"></a>获取 AppKey 和签名</h2><p>在 AS 中生成应用签名</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20120221.png" srcset="/img/loading.gif" lazyload alt="生成应用签名"></p>
+<p>这一步会生成一个 keystore 文件，里面存储我们的签名</p>
+<p>记住 keystore 的存储路径（最好设置在项目目录里）、 keystore 的密码、 key 的别名和 key password</p>
+<p>在 cmd 中输入 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs BASH">keytool -list -v -keystore [keystore 存储路径]<br></code></pre></td></tr></table></figure>
 
-<p>然后用 nvm list 查看是否安装成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvm list<br></code></pre></td></tr></table></figure>
+<p>查看签名证书的 SHA1 和 SHA256指纹</p>
+<p>会输出类似下列结构的信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs BASH">Keystore <span class="hljs-built_in">type</span>: PKCS12    <br>Keystore provider: SUN    <br><br>Your keystore contains 1 entry    <br><br>Alias name: <span class="hljs-built_in">test</span>    <br>Creation <span class="hljs-built_in">date</span>: 2019-10-28    <br>Entry <span class="hljs-built_in">type</span>: PrivateKeyEntry    <br>Certificate chain length: 1    <br>Certificate[1]:    <br>Owner: CN=Tester, OU=Test, O=Test, L=HD, ST=BJ, C=CN    <br>Issuer: CN=Tester, OU=Test, O=Test, L=HD, ST=BJ, C=CN    <br>Serial number: 7dd12840    <br>Valid from: Fri Jul 26 20:52:56 CST 2019 until: Sun Jul 02 20:52:56 CST 2119    <br>Certificate fingerprints:    <br>         MD5:  F9:F6:C8:1F:DB:AB:50:14:7D:6F:2C:4F:CE:E6:0A:A5    <br>         SHA1: BB:AC:E2:2F:97:3B:18:02:E7:D6:69:A3:7A:28:EF:D2:3F:A3:68:E7    <br>         SHA256: 24:11:7D:E7:36:12:BC:FE:AF:2A:6A:24:BD:04:4F:2E:33:E5:2D:41:96:5F:50:4D:74:17:7F:4F:E2:55:EB:26    <br>Signature algorithm name: SHA256withRSA    <br>Subject Public Key Algorithm: 2048-bit RSA key    <br>Version: 3<br></code></pre></td></tr></table></figure>
 
-<p>看到版本号前的星号就表示安装成功，并且当前使用该版本</p>
-<p><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427101039_5dc369d056bbbc7ac8316ae067fe4404.png" srcset="/img/loading.gif" lazyload alt="nvm list结果"></p>
-<p>nvm 工具管理 nodejs 版本非常方便，其他指令可自行查询</p>
-<h2 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">hexo 官网</a>，按照文档做即可创建博客项目，并轻松部署到 Github 上</p>
-<h1 id="部署到服务器"><a href="#部署到服务器" class="headerlink" title="部署到服务器"></a>部署到服务器</h1><h2 id="配置-SSH-密钥"><a href="#配置-SSH-密钥" class="headerlink" title="配置 SSH 密钥"></a>配置 SSH 密钥</h2><p>能部署到 Github，SSH 密钥应该已经生成了，直接用已经生成过的好了，在 git bash 中查看公钥：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102305_00b7997bf33985c6a968ba39c4fd645b.png" srcset="/img/loading.gif" lazyload alt="cat ~/.ssh/id_rsa.pub"></p>
-<p>把这一串，包括 ssh-rsa 的开头复制出来，待会用</p>
-<p>登录到服务器，安装 git</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt install git<br></code></pre></td></tr></table></figure>
-
-<p>然后创建一个 git 用户</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">adduser git<br></code></pre></td></tr></table></figure>
-
-<p>添加 git 用户权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 740 /etc/sudoers<br>vim /etc/sudoers<br></code></pre></td></tr></table></figure>
-
-<p>在 vim 中修改 git 用户权限如下：</p>
-<p><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427102823_23efa619fdd0fbcc0a104f4f31b0b713.png" srcset="/img/loading.gif" lazyload alt="修改git用户权限"></p>
-<p>把 sudoers 文件的权限改回来</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 400 /etc/sudoers<br></code></pre></td></tr></table></figure>
-
-<p>设置 git 用户的密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">passwd git<br></code></pre></td></tr></table></figure>
-
-<p>切换至 git 用户，然后把我们刚刚复制的公钥放到服务器上<br>先在 git 用户目录下创建文件夹和指定文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">su git<br>cd ~<br>mkdir .ssh<br>vim .ssh/authorized_keys<br></code></pre></td></tr></table></figure>
-
-<p>在文本编辑器中，把我们的公钥粘贴进去，这个文件可以存放多个公钥：<br><img src="https://wolf-blog-1314051886.cos.ap-guangzhou.myqcloud.com/20230427103554_c9225616c51a533fdaf9f271f3c310c4.png" srcset="/img/loading.gif" lazyload alt="用换行分隔"></p>
-<p>保存退出后验证一下是否配置成功，用以下指令，再输入 yes，若不用密码能连接上服务器，说明 ssh 密钥配置成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -v git@服务器ip<br></code></pre></td></tr></table></figure>
-
-<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>用 root 用户创建一个仓库目录用于存放 hexo 部署时上传的代码，其实放哪都行，但所有参考博客都放 var 下，也跟着做了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /var/repo<br></code></pre></td></tr></table></figure>
-
-<p>给 git 用户赋予访问权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chown -R git:git /var/repo<br>chmod -R 755 /var/repo<br></code></pre></td></tr></table></figure>
-
-<p>在这个目录下创建 git 仓库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /var/repo<br>git init --bare hexo.git<br></code></pre></td></tr></table></figure>
-
-<p>创建一个 git 钩子，用于自动部署</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vim /var/repo/hexo.git/hooks/post-receive<br></code></pre></td></tr></table></figure>
-
-<p>该文件中写入以下脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>git --work-tree=/var/hexo --git-dir=/var/repo/hexo.git checkout -f<br></code></pre></td></tr></table></figure>
-
-<p>给这个钩子文件赋予权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chown -R git:git /var/repo/hexo.git/hooks/post-receive<br>chmod +x /var/repo/hexo.git/hooks/post-receive<br></code></pre></td></tr></table></figure>
-
-<p>创建 hexo 目录，作为 hexo 打包后存放的目录，也就是 nginx 配置中网站的根目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /var/hexo<br>chown -R git:git /var/hexo<br>chmod -R 755 /var/hexo<br></code></pre></td></tr></table></figure>
-
-<p>仓库创建配置完成</p>
-<h2 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h2><p>刚刚提到过，hexo 目录，作为 hexo 打包后存放的目录，也就是 nginx 配置中网站的根目录</p>
-<p>在 nginx 配置文件中：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">server &#123;<br>    listen      80;<br>    server_name FrontEndServer;<br>    location /xxx &#123;<br>        alias /var/hexo;<br>        index index.html;<br>        try_files $uri $uri/ /xxx/index.html;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>重新加载配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
-
-<h2 id="修改-hexo-配置文件"><a href="#修改-hexo-配置文件" class="headerlink" title="修改 hexo 配置文件"></a>修改 hexo 配置文件</h2><p>修改关于部署的部分</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@服务器ip或域名:/var/repo/hexo.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span><br></code></pre></td></tr></table></figure>
-
-<p>但只改这部分，打包好后的 html 中引用的 css、js 文件都在服务器根目录下，显然这会找不到资源，因此配置_config.yml 中的网站根路径</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">url:</span> <span class="hljs-string">http(s)://域名/xxx</span><br><span class="hljs-attr">root:</span> <span class="hljs-string">/xxx/</span><br></code></pre></td></tr></table></figure>
-
-<p>xxx 和 nginx 中配置的访问路径对应</p>
-<h2 id="安装-hexo-部署插件"><a href="#安装-hexo-部署插件" class="headerlink" title="安装 hexo 部署插件"></a>安装 hexo 部署插件</h2><p>有些主题不一定包含 hexo-deployer-git 插件，因此安装一下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm i hexo-deployer-git<br></code></pre></td></tr></table></figure>
-
-<h2 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h2><p>使用<code>hexo d -g</code>，快速将本地博客部署到服务器<br>done.</p>
+<p><strong>MD5不一定有，据说看 JDK 和 SDK 版本，但不是必须</strong></p>
+<p>登录 <a target="_blank" rel="noopener" href="https://dev.dcloud.net.cn/pages/app/list">DCloud 开发者后台</a> 可以看到我们申请的 AppID 列表</p>
+<p>进入我们需要打包的应用，选择“各平台信息”并添加，填入基本信息</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20121303.png" srcset="/img/loading.gif" lazyload alt="各平台信息"></p>
+<p>包名在 HBuilder-Integrate-AS 的 AndroidManifest.xml 中获取</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20121514.png" srcset="/img/loading.gif" lazyload alt="包名获取"></p>
+<p>填写完毕后，即可查看离线打包 key</p>
+<p>修改 simpleDemo 中的 build.gradle 填入刚刚获得的签名证书信息</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20121805.png" srcset="/img/loading.gif" lazyload alt="build.gradle"></p>
+<p>最后修改 AndroidManifest.xml 中的 AppKey</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20122035.png" srcset="/img/loading.gif" lazyload alt="AppKey"></p>
+<p>已经可以打包成 apk 了</p>
+<p><img src="/img/Uniapp%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/%E6%9C%AC%E5%9C%B0%E6%89%93%E5%8C%85/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20122143.png" srcset="/img/loading.gif" lazyload alt="生成 apk"></p>
+<p>在 AS 弹出来的信息中点击 locate 即可打开 apk 文件所在目录</p>
 
                 
               </div>
@@ -407,8 +388,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo博客部署到服务器</div>
-      <div>https://wolf1024hzx.github.io/2023/04/27/hexo博客部署到服务器/</div>
+      <div>Uniapp打包安卓apk流程记录</div>
+      <div>https://wolf1024hzx.github.io/2024/09/07/Uniapp打包安卓apk流程记录/</div>
     </div>
     <div class="license-meta">
       
@@ -420,7 +401,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年4月27日</div>
+          <div>2024年9月7日</div>
         </div>
       
       
@@ -452,18 +433,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/25/%E6%8C%87%E5%AE%9Agit%E4%BD%BF%E7%94%A8%E6%9F%90%E4%B8%AAssh%E7%A7%81%E9%92%A5/" title="指定git使用某个ssh私钥">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">指定git使用某个ssh私钥</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/05/%E9%9D%A2%E8%AF%95%E4%B8%8D%E8%B6%B3/" title="面试官给您跪下了qaq">
-                        <span class="hidden-mobile">面试官给您跪下了qaq</span>
+                      <a href="/2024/02/20/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E9%A6%96%E9%A1%B5%E7%88%AC%E8%99%AB/" title="小红书爬虫(JS注入和RPC爬虫)">
+                        <span class="hidden-mobile">小红书爬虫(JS注入和RPC爬虫)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
