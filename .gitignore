@@ -1,24 +1,18 @@
-.DS_Store
-Thumbs.db
+# Hexo generated files
 db.json
-*.log
-node_modules/
 public/
 .deploy*/
-_multiconfig.yml
+
+# Dependencies
+node_modules/
 
 # IDE
 .idea/
-.vscode/
-*.swp
-*.swo
+.claude/
 
-# Environment
-.env
-.env.*
+# Logs
+*.log
 
-# OS
-.Spotlight-V100
-.Trashes
-
-.claude
+# System files
+.DS_Store
+Thumbs.db
