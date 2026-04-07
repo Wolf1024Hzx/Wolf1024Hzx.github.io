@@ -23,5 +23,10 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-fluid": "^1.9.9",
     "hexo-theme-landscape": "^0.0.3"
+  },
+  "overrides": {
+    "strip-ansi": "6.0.1",
+    "string-width": "4.2.3",
+    "wrap-ansi": "7.0.0"
   }
 }
