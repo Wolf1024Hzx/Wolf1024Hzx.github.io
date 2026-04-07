@@ -1,5 +1,5 @@
 ---
-title: Go语言学习笔记
+title: Go语言学习笔记（持续更新中）
 tags: 后端
 categories: 后端
 date: 2026-04-03 11:23
