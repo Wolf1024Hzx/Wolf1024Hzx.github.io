@@ -54,6 +54,7 @@ hp elitedesk 800 G4 DM
 - 安装了 PVE 系统, ip 固定为 192.168.31.200 (路由器里固定)
 - PVE 里安装了 OpenWrt, ip 固定为 192.168.31.2 (系统内配了静态 ip), 配置了 xxx.wolfden.website 的域名拦截解析到 192.168.31.119, 配置了 OpenClash
 - PVE 里安装了 Ubuntu Server, ip 固定为 192.168.31.119 (路由器里固定，系统里也写死), 网关也指向 OpenWrt, 包括 Jellyfin 和 Nginx Proxy Manager 在内的一大堆 docker 容器
+- 注意（2026-07-23 实锤）：Ubuntu Server 在 OpenClash 白名单内，它的 DNS 请求会被 Mihomo 返回 fake-ip，OpenWrt 的域名拦截解析对这台 VM 自身不生效（已验证：OpenClash 的 DNS 劫持顺序在 dnsmasq 主机名映射之前）。在这台 VM 上访问本机服务一律用 127.0.0.1 或 192.168.31.119 加端口，不要用 *.wolfden.website 域名；k3s Pod 访问本机依赖同理。决定：不修，不在 Clash 里重复维护域名映射（详见 修复配置 OpenWrt 旁路由为 DNS 服务器后的网络问题.md 末尾补充注意）
 
 ## 备用笔记本
 

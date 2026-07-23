@@ -76,3 +76,21 @@ date: 2026-03-20
 ```
 
 ---
+
+## 补充注意（2026-07-23 实锤）：白名单内的 Ubuntu 节点访问自身域名会走进代理
+
+**现象**：在 Ubuntu 服务节点（192.168.31.119，OpenClash 白名单内）上解析 `*.wolfden.website` 任意名字，返回的都是 Mihomo fake-ip（198.18.x.x，TTL=1），不是主机名映射里的 192.168.31.119；https 访问会失败（mihomo 反查域名在公网 NXDOMAIN，链路两头断）。
+
+**实锤证据（2026-07-22 晚 dig 排查）**：
+
+- git / homepage / test123 / apex 四个名字全部返回 fake-ip、TTL=1（mihomo 招牌特征）；连明确配过映射的 homepage 也不例外 → 查询根本没走到 dnsmasq 的映射逻辑，OpenClash 的 DNS 劫持顺序在映射匹配之前。
+- 对照组 @192.168.31.1（小米路由器）：子域名 NXDOMAIN、apex 正常公网解析 → 问题只出在 OpenWrt 的劫持链路。
+- 白名单以外的设备（手机/电脑）用域名访问完全正常：它们的 DNS 走 dnsmasq 正常流程，映射生效。**全局域网只有白名单内这台 VM 域名访问是坏的。**
+
+**本质（白名单悖论）**：这台 VM 既要走代理访问外网（DNS 必须被 Mihomo 接管），又要直连内网域名（需要 dnsmasq 映射生效）——两个需求在同一个 DNS 链路上互斥，代理赢了，内网域名就输了。
+
+**决定（2026-07-23）：不修复，维持"VM 上用 IP"规则**：
+
+- 备选修法（mihomo 自定义 hosts，或 fake-ip-filter + nameserver-policy）都要在 Clash 里把内网域名映射**再维护一份**，与 OpenWrt 主机名映射形成两处配置，必然漂移——不修。
+- 规则：**在这台 VM 上访问本机服务，一律使用 `127.0.0.1:端口` 或 `192.168.31.119:端口`，不要使用 `*.wolfden.website` 域名**；未来 k3s 的 Pod 访问本机依赖同理（Pod 的 DNS 也走这台 VM 的出口）。域名解析是给白名单以外的内网设备用的。
+- 实例：2026-06 配置 Gitea act_runner 时，用 `https://git.wolfden.website` 注册报 "Cannot ping the Gitea instance server"，改用 `http://127.0.0.1:3001` 立刻成功。当时归因于 NPM 的 RPC 不兼容，实际根因就是本条。

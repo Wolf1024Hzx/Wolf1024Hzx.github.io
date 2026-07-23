@@ -497,6 +497,8 @@ error="unimplemented: unary response has zero messages"
 - runner 的 Actions RPC 接口通过 Nginx Proxy Manager 反代时不兼容。
 - 普通网页访问没问题，但 runner 注册和通信不是普通网页请求。
 
+> 补充（2026-07-23）：更可能的根因是 fake-ip——本机在 OpenClash 白名单内，DNS 被劫持，`git.wolfden.website` 解析为 198.18.x.x（fake-ip），流量走进代理隧道而非本机 NPM。详见 `修复配置 OpenWrt 旁路由为 DNS 服务器后的网络问题.md` 末尾补充注意。
+
 改用本机端口后注册成功：
 
 ```bash
