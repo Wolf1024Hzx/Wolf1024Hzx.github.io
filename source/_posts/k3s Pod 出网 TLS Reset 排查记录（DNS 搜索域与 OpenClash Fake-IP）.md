@@ -15,7 +15,7 @@ date: 2026-07-26 12:08:00
 
 周末把个人项目 PaperMind（Go 后端 + React 前端 + PostgreSQL + Redis）整体迁移到了 HomeLab 的 k3s 上。部署本身很顺利，四个 Pod 全部 Running，前端页面也能打开——直到做功能联调：上传论文"处理失败"，AI 对话也没响应。
 
-这是同一套 OpenClash fake-ip 环境的第二次踩坑。前一次是局域网域名劫持（见《OpenClash Fake-IP 劫持与 dnsmasq 主机名映射冲突排查记录》），这一次的故事更精彩：嫌疑人换了好几轮，真凶是一个谁都没正眼瞧过的 DNS 搜索域。
+这是同一套 OpenClash fake-ip 环境的第二次踩坑。
 
 ## 故障现象
 
