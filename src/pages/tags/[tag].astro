@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getSortedPosts, groupBy, formatDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const tags = groupBy(await getSortedPosts(), 'tags');
+  return [...tags.entries()].map(([tag, posts]) => ({
+    params: { tag },
+    props: { posts },
+  }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Base title={`标签：${tag}`}>
+  <h1>标签：{tag}</h1>
+  <ul>
+    {
+      posts.map((post: (typeof posts)[number]) => (
+        <li>
+          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+          <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.2rem 0;
+  }
+
+  time {
+    font-size: 0.85rem;
+    color: #888;
+    font-variant-numeric: tabular-nums;
+  }
+</style>

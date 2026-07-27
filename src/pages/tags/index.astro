@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getSortedPosts, groupBy } from '../../lib/posts';
+
+const tags = groupBy(await getSortedPosts(), 'tags');
+---
+
+<Base title="标签">
+  <h1>标签</h1>
+  <ul>
+    {
+      [...tags.entries()].map(([tag, posts]) => (
+        <li>
+          <a href={`/tags/${tag}/`}>{tag}</a>
+          <span class="count">（{posts.length}）</span>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  .count {
+    color: #888;
+    font-size: 0.85rem;
+  }
+</style>

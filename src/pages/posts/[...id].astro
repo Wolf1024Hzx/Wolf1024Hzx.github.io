@@ -1,0 +1,49 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getSortedPosts, toArray, formatDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts();
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const categories = toArray(post.data.categories);
+const tags = toArray(post.data.tags);
+---
+
+<Base title={post.data.title}>
+  <article>
+    <h1>{post.data.title}</h1>
+    <p class="meta">
+      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+      {
+        categories.map((c) => (
+          <>
+            {' · '}<a href={`/categories/${c}/`}>{c}</a>
+          </>
+        ))
+      }
+      {
+        tags.map((t) => (
+          <>
+            {' · '}<a href={`/tags/${t}/`}>{t}</a>
+          </>
+        ))
+      }
+    </p>
+    <Content />
+  </article>
+</Base>
+
+<style>
+  .meta {
+    font-size: 0.85rem;
+    color: #888;
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getSortedPosts, groupBy } from '../../lib/posts';
+
+const categories = groupBy(await getSortedPosts(), 'categories');
+---
+
+<Base title="分类">
+  <h1>分类</h1>
+  <ul>
+    {
+      [...categories.entries()].map(([category, posts]) => (
+        <li>
+          <a href={`/categories/${category}/`}>{category}</a>
+          <span class="count">（{posts.length}）</span>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  .count {
+    color: #888;
+    font-size: 0.85rem;
+  }
+</style>

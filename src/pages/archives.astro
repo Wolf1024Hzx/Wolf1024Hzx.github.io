@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import { getSortedPosts, formatDate } from '../lib/posts';
+
+const posts = await getSortedPosts();
+const byYear = new Map<number, typeof posts>();
+for (const post of posts) {
+  const year = post.data.date.getUTCFullYear();
+  const list = byYear.get(year) ?? [];
+  list.push(post);
+  byYear.set(year, list);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<Base title="归档">
+  <h1>归档</h1>
+  {
+    years.map((year) => (
+      <section>
+        <h2>{year}</h2>
+        <ul>
+          {byYear.get(year)!.map((post) => (
+            <li>
+              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.2rem 0;
+  }
+
+  time {
+    font-size: 0.85rem;
+    color: #888;
+    font-variant-numeric: tabular-nums;
+  }
+</style>

@@ -1,7 +1,6 @@
-# Hexo generated files
-db.json
-public/
-.deploy*/
+# Astro build output
+dist/
+.astro/
 
 # Dependencies
 node_modules/
