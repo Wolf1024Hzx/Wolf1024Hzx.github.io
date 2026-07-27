@@ -49,6 +49,9 @@ jobs:
             -- --site "${{ steps.pages.outputs.origin }}"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          # Astro 构建输出目录，模板默认为 Jekyll 的 _site
+          path: dist
 
   deploy:
     environment:
