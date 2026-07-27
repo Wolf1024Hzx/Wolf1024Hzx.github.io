@@ -3,18 +3,26 @@ import Base from '../layouts/Base.astro';
 import { getSortedPosts, formatDate } from '../lib/posts';
 
 const posts = await getSortedPosts();
+const oldestYear = posts[posts.length - 1]?.data.date.getFullYear();
 ---
 
 <Base>
   <section class="hero">
-    <p class="slogan">但屈指西风几时来，又不道流年暗中偷换</p>
+    <p class="hero-meta">
+      <span>EST. {oldestYear}</span>
+      <span class="hero-meta-dot" aria-hidden="true"></span>
+      <span>共 {posts.length} 篇</span>
+    </p>
+    <p class="slogan">但屈指西风几时来，<br />又不道流年暗中偷换</p>
+    <div class="hero-rule" aria-hidden="true"></div>
   </section>
   <ul class="post-list">
     {
-      posts.map((post) => (
-        <li>
+      posts.map((post, index) => (
+        <li style={`--i: ${Math.min(index, 12)}`}>
           <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
           <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+          {index === 0 && <span class="new-badge">NEW</span>}
         </li>
       ))
     }
