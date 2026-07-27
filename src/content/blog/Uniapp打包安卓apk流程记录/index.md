@@ -18,7 +18,7 @@ date: 2024-09-07 16:51:08
 
 点击“发行”->“原生App-云打包”
 
-![云打包截图](/img/Uniapp打包安卓apk流程记录/云打包/屏幕截图%202024-09-05%20112256.png)
+![云打包截图](<./云打包/屏幕截图 2024-09-05 112256.png>)
 
 等待即可（期间可能会自动下载所需插件，如 scss 和 less 的编译插件等）
 
@@ -40,45 +40,45 @@ date: 2024-09-07 16:51:08
 
 下载后打开目录，结构如下图所示：
 
-![uniapp sdk 目录结构](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20113926.png)
+![uniapp sdk 目录结构](<./本地打包/屏幕截图 2024-09-05 113926.png>)
 
 仅需用到 HBuilder-Integrate-AS
 
 使用 android studio 打开 HBuilder-Integrate-AS 项目
 
-![HBuilder-Integrate-AS](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20114233.png)
+![HBuilder-Integrate-AS](<./本地打包/屏幕截图 2024-09-05 114233.png>)
 
 左上角把视图改为 Project
 
-![项目视图](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20114347.png)
+![项目视图](<./本地打包/屏幕截图 2024-09-05 114347.png>)
 
 配置 Project Structure 为项目指定 JDK 和 SDK version
 
-![Project Structure 1](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20114702.png)
+![Project Structure 1](<./本地打包/屏幕截图 2024-09-05 114702.png>)
 
-![Project Structure 2](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20114751.png)
+![Project Structure 2](<./本地打包/屏幕截图 2024-09-05 114751.png>)
 
-![Project Structure 3](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20115000.png)
+![Project Structure 3](<./本地打包/屏幕截图 2024-09-05 115000.png>)
 
 ## 开始打包
 
 打开 HBuilder ，将 uniapp 项目生成本地打包资源
 
-![生成本地打包资源](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20115304.png)
+![生成本地打包资源](<./本地打包/屏幕截图 2024-09-05 115304.png>)
 
 将生成的 __UNI__APPID 目录移入 HBuilder-Integrate-AS 项目中对应的位置上
 
-![插入 uniapp 打包资源](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20115523.png)
+![插入 uniapp 打包资源](<./本地打包/屏幕截图 2024-09-05 115523.png>)
 
 替换 dcloud_control.xml 中的 AppId （没改动则不需要替换）
 
-![替换 AppId](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20115747.png)
+![替换 AppId](<./本地打包/屏幕截图 2024-09-05 115747.png>)
 
 ## 获取 AppKey 和签名
 
 在 AS 中生成应用签名
 
-![生成应用签名](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20120221.png)
+![生成应用签名](<./本地打包/屏幕截图 2024-09-05 120221.png>)
 
 这一步会生成一个 keystore 文件，里面存储我们的签名
 
@@ -124,24 +124,24 @@ Version: 3
 
 进入我们需要打包的应用，选择“各平台信息”并添加，填入基本信息
 
-![各平台信息](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20121303.png)
+![各平台信息](<./本地打包/屏幕截图 2024-09-05 121303.png>)
 
 包名在 HBuilder-Integrate-AS 的 AndroidManifest.xml 中获取
 
-![包名获取](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20121514.png)
+![包名获取](<./本地打包/屏幕截图 2024-09-05 121514.png>)
 
 填写完毕后，即可查看离线打包 key
 
 修改 simpleDemo 中的 build.gradle 填入刚刚获得的签名证书信息
 
-![build.gradle](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20121805.png)
+![build.gradle](<./本地打包/屏幕截图 2024-09-05 121805.png>)
 
 最后修改 AndroidManifest.xml 中的 AppKey
 
-![AppKey](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20122035.png)
+![AppKey](<./本地打包/屏幕截图 2024-09-05 122035.png>)
 
 已经可以打包成 apk 了
 
-![生成 apk](/img/Uniapp打包安卓apk流程记录/本地打包/屏幕截图%202024-09-05%20122143.png)
+![生成 apk](<./本地打包/屏幕截图 2024-09-05 122143.png>)
 
 在 AS 弹出来的信息中点击 locate 即可打开 apk 文件所在目录

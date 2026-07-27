@@ -6,8 +6,6 @@ toc:
   showListNumber: false
   maxDepth: 6
   minDepth: 1
-banner_img: /img/webpack学习/banner.jpg
-index_img: /img/webpack学习/banner.jpg
 date: 2023-03-13 17:29:50
 ---
 

@@ -6,8 +6,6 @@ toc:
   showListNumber: false
   maxDepth: 6
   minDepth: 1
-banner_img: /img/小红书首页爬虫/banner.jpg
-index_img: /img/小红书首页爬虫/banner.jpg
 date: 2024-02-20 23:10:57
 ---
 
@@ -30,7 +28,7 @@ GET https://www.xiaohongshu.com/user/profile/[用户id]
 
 而其他接口均需要以下三个请求头字段作为校验
 
-![三个请求头](/img/小红书首页爬虫/homefeed接口请求头.jpg)
+![三个请求头](./homefeed接口请求头.jpg)
 
 经过长时间尝试后，实在是能力有限，无法通过补环境补出 X-s 的生成算法，故使用 JS 注入和 RPC 远程调用的方式，下面以两个案例展开
 
@@ -44,13 +42,13 @@ JS 注入原理相当简单
 
 我们虽然无法伪造出这个请求，但可以在前端进行 DOM 操作提取出显示在浏览器上的信息。先观察前端的页面结构：
 
-![前端结构](/img/小红书首页爬虫/前端结构.jpg)
+![前端结构](./前端结构.jpg)
 
 可以发现笔记都在 id 为 exploreFeeds 的 div 下，存在一个个 section 里
 
 而 section 中的结构又如下
 
-![section详情](/img/小红书首页爬虫/section详情.jpg)
+![section详情](./section详情.jpg)
 
 可以看到笔记的 id 和作者的 id，接下来我们使用 DOM 操作提取一下:
 
@@ -97,7 +95,7 @@ function getUserId(el) {
 
 把这段代码放控制台运行一下试试
 
-![DOM操作结果](/img/小红书首页爬虫/DOM操作结果.jpg)
+![DOM操作结果](./DOM操作结果.jpg)
 
 那么接下来要干的事情有两件:
 

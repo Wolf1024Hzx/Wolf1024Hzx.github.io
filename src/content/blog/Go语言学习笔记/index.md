@@ -101,7 +101,7 @@ GM 模型主要有以下两个缺点：
 
 首先要注意 P 不是进程（Progress）而是处理器(Processor)，模型图如下：
 
-![GMP 模型](/img/Go学习笔记/GMP.png)
+![GMP 模型](./GMP.png)
 
 全局队列其实就是 GM 模型里的 G 队列
 

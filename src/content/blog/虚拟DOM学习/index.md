@@ -3,8 +3,6 @@ title: 虚拟DOM学习
 tags: 前端
 date: 2023-03-20 16:53:00
 categories: 学习
-banner_img: /img/虚拟DOM学习/Snabbdom/banner.jpg
-index_img: /img/虚拟DOM学习/Snabbdom/banner.jpg
 ---
 
 # 虚拟 DOM 介绍
@@ -86,7 +84,7 @@ module.exports = {
 ```
 
 创建 src 和 www 目录，分别创建 index.js 和 html 文件后，此时项目目录结构如下：
-![Snabbdom初始化项目结构](/img/虚拟DOM学习/Snabbdom/Snabbdom项目初始化结构.jpg)
+![Snabbdom初始化项目结构](./Snabbdom/Snabbdom项目初始化结构.jpg)
 
 复制 Snabbdom 官方样例代码到 index.js 中
 
@@ -159,7 +157,7 @@ patch(vnode, newVnode) // 将旧节点更新为新节点
 
 npm run dev 运行该脚本，即可访问 http://localhost:8080 观察样例代码运行结果
 
-![Snabbdom样例代码运行结果](/img/虚拟DOM学习/Snabbdom/Snabbdom样例代码运行结果.jpg)
+![Snabbdom样例代码运行结果](./Snabbdom/Snabbdom样例代码运行结果.jpg)
 
 ## 样例代码研究
 
@@ -341,7 +339,7 @@ patch(container, vnode)
 ```
 
 如果只运行这部分代码，页面会呈现什么样子呢，下面是页面的效果和 html 结构
-![页面效果和html结构](/img/虚拟DOM学习/Snabbdom/修改id为outer后运行结果.jpg)
+![页面效果和html结构](./Snabbdom/修改id为outer后运行结果.jpg)
 body 下的 div 的 id 变成了 outer，那 patch 函数的作用就非常明显了，就是替换掉真实 DOM 元素！
 但这个过程显然不可能是把整个真实的 DOM 节点直接替换，这样开销实在是太大了。因此 patch 函数内部的逻辑必然是只替换内容有改变，或插入新增的 DOM 元素，本文心心念念的第一个 diff 算法就在里面！
 
@@ -549,9 +547,9 @@ patch(container, vnode)
 ```
 
 然后修改一下 snabbdom 源码（build 里的 js 文件，ts 只是阅读的，js 才是实际调用的）
-![验证vnode的data的更新位置](/img/虚拟DOM学习/Snabbdom/验证vnode的data的更新位置.jpg)
+![验证vnode的data的更新位置](./Snabbdom/验证vnode的data的更新位置.jpg)
 然后运行 dev server，观察输出结果：
-![data更新位置在update钩子函数里](/img/虚拟DOM学习/Snabbdom/data更新位置在update钩子函数里.jpg)
+![data更新位置在update钩子函数里](./Snabbdom/data更新位置在update钩子函数里.jpg)
 这下结果就很明显了，**data 的更新位置在第三方模块传入的 update 钩子中！**
 
 既然是第三方传入的，那不急着看传入的 update 钩子函数的内容；但我们得到了一个结论，`patchVnode`函数看起来只更新孩子节点或文本内容，是因为在开头的钩子函数中已经处理 data 的更新。
@@ -564,7 +562,7 @@ patch(container, vnode)
 这个想法非常关键，因为 diff 的最小更新思路，就是通过**尽量不删除真实 DOM**实现的。
 
 既然要真实 DOM 尽可能少销毁，那么平时在使用框架开发时，我们经常对表格的数据进行排序，这一过程就必然只涉及真实 DOM 节点的移动。而真实 DOM 节点的移动通过下面这个 DOM api 实现：
-![insertBefore](/img/虚拟DOM学习/Snabbdom/insertBefore.jpg)
+![insertBefore](./Snabbdom/insertBefore.jpg)
 这个函数接收两个真实 DOM 元素作为参数，调用的节点为父元素，第二个参数是这个父元素的孩子，函数的作用是把第一个参数的节点插入这个父元素中，并插入在第二个参数传入的孩子前，。但值得注意的是，选中的部分已经说明了，如果第一个参数已经存在父节点中，那么**第一个参数传入的节点只会移动位置，而不会新建一个一样的节点**。这就实现了我们需要的移动效果。
 
 接下来，真正开始看这最核心部分的源码，思路过程都在注释里

@@ -9,8 +9,6 @@ toc:
   showListNumber: false
   maxDepth: 6
   minDepth: 1
-banner_img: /img/java.png
-index_img: /img/java.png
 ---
 
 ## 前言
