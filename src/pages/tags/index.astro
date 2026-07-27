@@ -6,22 +6,20 @@ const tags = groupBy(await getSortedPosts(), 'tags');
 ---
 
 <Base title="标签">
-  <h1>标签</h1>
-  <ul>
+  <header class="page-header">
+    <h1>标签</h1>
+    <p class="page-desc">共 {tags.size} 个</p>
+  </header>
+  <ul class="pill-list">
     {
       [...tags.entries()].map(([tag, posts]) => (
         <li>
-          <a href={`/tags/${tag}/`}>{tag}</a>
-          <span class="count">（{posts.length}）</span>
+          <a href={`/tags/${tag}/`}>
+            {tag}
+            <span class="count">{posts.length}</span>
+          </a>
         </li>
       ))
     }
   </ul>
 </Base>
-
-<style>
-  .count {
-    color: #888;
-    font-size: 0.85rem;
-  }
-</style>

@@ -4,11 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-07-26 12:08:00
 ---
-
-# k3s Pod 出网 TLS Reset 排查记录：DNS 搜索域与 OpenClash Fake-IP
-
-**日期：** 2026-07-26
-
 **环境：** HomeLab Ubuntu VM（192.168.31.119），k3s v1.36.2 与 Docker 共存；网关 OpenWrt 跑 OpenClash（fake-ip 模式，198.18.0.0/16）
 
 ## 背景

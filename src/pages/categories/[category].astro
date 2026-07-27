@@ -15,8 +15,11 @@ const { posts } = Astro.props;
 ---
 
 <Base title={`分类：${category}`}>
-  <h1>分类：{category}</h1>
-  <ul>
+  <header class="page-header">
+    <h1>分类：{category}</h1>
+    <p class="page-desc">共 {posts.length} 篇</p>
+  </header>
+  <ul class="post-list">
     {
       posts.map((post: (typeof posts)[number]) => (
         <li>
@@ -27,23 +30,3 @@ const { posts } = Astro.props;
     }
   </ul>
 </Base>
-
-<style>
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    display: flex;
-    gap: 1rem;
-    align-items: baseline;
-    padding: 0.2rem 0;
-  }
-
-  time {
-    font-size: 0.85rem;
-    color: #888;
-    font-variant-numeric: tabular-nums;
-  }
-</style>

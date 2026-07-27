@@ -4,9 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-03-20
 ---
-
-# 修复配置 OpenWrt 旁路由为 DNS 服务器后的网络异常纪录
-
 ---
 
 ## 异常现象描述

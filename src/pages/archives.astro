@@ -14,15 +14,23 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
 ---
 
 <Base title="归档">
-  <h1>归档</h1>
+  <header class="page-header">
+    <h1>归档</h1>
+    <p class="page-desc">共 {posts.length} 篇</p>
+  </header>
   {
     years.map((year) => (
       <section>
-        <h2>{year}</h2>
-        <ul>
+        <h2 class="archive-year">
+          {year}
+          <span class="year-count">{byYear.get(year)!.length} 篇</span>
+        </h2>
+        <ul class="post-list">
           {byYear.get(year)!.map((post) => (
             <li>
-              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              <time datetime={post.data.date.toISOString()}>
+                {formatDate(post.data.date).slice(5)}
+              </time>
               <a href={`/posts/${post.id}/`}>{post.data.title}</a>
             </li>
           ))}
@@ -31,23 +39,3 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
     ))
   }
 </Base>
-
-<style>
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    display: flex;
-    gap: 1rem;
-    align-items: baseline;
-    padding: 0.2rem 0;
-  }
-
-  time {
-    font-size: 0.85rem;
-    color: #888;
-    font-variant-numeric: tabular-nums;
-  }
-</style>

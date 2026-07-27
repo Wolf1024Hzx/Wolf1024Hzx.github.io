@@ -3,9 +3,14 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="关于">
-  <h1>关于</h1>
-  <hr />
-  <p>不是，这为啥跑不了？</p>
-  <p>不是，这为啥能跑？？</p>
-  <hr />
+  <header class="page-header">
+    <h1>关于</h1>
+  </header>
+  <div class="prose">
+    <img class="about-avatar" src="/img/avatar.jpg" alt="小狼的头像" width="112" height="112" />
+    <hr />
+    <p>不是，这为啥跑不了？</p>
+    <p>不是，这为啥能跑？？</p>
+    <hr />
+  </div>
 </Base>

@@ -6,22 +6,20 @@ const categories = groupBy(await getSortedPosts(), 'categories');
 ---
 
 <Base title="分类">
-  <h1>分类</h1>
-  <ul>
+  <header class="page-header">
+    <h1>分类</h1>
+    <p class="page-desc">共 {categories.size} 个</p>
+  </header>
+  <ul class="pill-list">
     {
       [...categories.entries()].map(([category, posts]) => (
         <li>
-          <a href={`/categories/${category}/`}>{category}</a>
-          <span class="count">（{posts.length}）</span>
+          <a href={`/categories/${category}/`}>
+            {category}
+            <span class="count">{posts.length}</span>
+          </a>
         </li>
       ))
     }
   </ul>
 </Base>
-
-<style>
-  .count {
-    color: #888;
-    font-size: 0.85rem;
-  }
-</style>

@@ -4,9 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-03-10
 ---
-
-# HomeLab 内网 HTTPS 无感访问配置纪录
-
 **目标**：在局域网内访问各类 HomeLab 服务（如 Homepage、Jellyfin、Portainer 等）时，直接使用自定义子域名并全程开启 HTTPS，且**不需要**在任何手机或电脑上安装自签名的根证书。
 
 ---

@@ -4,11 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-04-20 12:52
 ---
-
-# Jellyfin 内网高速下载导致 PVE 宿主机网卡崩溃 (Tx Unit Hang)
-
-**日期：** 2026-04-20
-
 **问题：** 迷你主机在千兆内网环境下，通过 Jellyfin 下载大体积视频文件时网卡崩溃断网。
 **环境：** HP EliteDesk 800 G4 DM (Intel I219-LM 千兆网卡 / `e1000e` 驱动)，底层为 PVE 虚拟化系统。
 

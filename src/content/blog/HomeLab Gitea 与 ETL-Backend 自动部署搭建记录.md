@@ -4,9 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-06-07
 ---
-
-**日期：** 2026-06-07
-
 **目标：** 为 `ETL-Backend` 搭建一个局域网内自用的代码仓库和自动部署链路，避免每次在笔记本上修改代码后，还要手动复制到 Ubuntu Server，再手动执行 Docker Compose 重新部署。
 
 ---

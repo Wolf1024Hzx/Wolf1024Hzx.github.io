@@ -4,9 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-03-21 16:29
 ---
-
-# Dell Optiplex Micro 7090 无法安装 Windows 问题排查
-
 **问题：** 实验室的迷你主机 Dell Optiplex Micro 7090 无法安装 Windows，但是可以安装 Linux。安装 Windows 的时候，系统 U 盘尝试将操作系统写入硬盘时，会没有任何硬盘可选。
 
 ---

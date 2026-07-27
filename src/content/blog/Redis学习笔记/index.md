@@ -4,9 +4,6 @@ tags: 后端
 categories: 后端
 date: 2026-03-09 17:29
 ---
-
-# Redis学习笔记
-
 本文记录了我在阅读《小林 coding | 图解 Redis》过程中对若干细节的补充理解，务必结合原文阅读。
 
 参考：[小林 coding | 图解 Redis](https://www.xiaolincoding.com/redis/)

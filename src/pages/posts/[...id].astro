@@ -12,38 +12,98 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const categories = toArray(post.data.categories);
-const tags = toArray(post.data.tags);
+// 与分类重名的标签不再重复展示
+const tags = toArray(post.data.tags).filter((t) => !categories.includes(t));
+
+// 目录取前三级标题，缩进以出现过的最小层级为基准归一化
+const tocHeadings = headings.filter((h) => h.depth <= 3);
+const minDepth = Math.min(...tocHeadings.map((h) => h.depth));
+const showToc = tocHeadings.length >= 2;
 ---
 
 <Base title={post.data.title}>
-  <article>
-    <h1>{post.data.title}</h1>
-    <p class="meta">
-      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-      {
-        categories.map((c) => (
-          <>
-            {' · '}<a href={`/categories/${c}/`}>{c}</a>
-          </>
-        ))
-      }
-      {
-        tags.map((t) => (
-          <>
-            {' · '}<a href={`/tags/${t}/`}>{t}</a>
-          </>
-        ))
-      }
-    </p>
-    <Content />
+  <article class="post-article">
+    <header class="post-header">
+      <h1>{post.data.title}</h1>
+      <p class="post-meta">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        {
+          categories.map((c) => (
+            <>
+              <span class="sep">&middot;</span>
+              <a href={`/categories/${c}/`}>{c}</a>
+            </>
+          ))
+        }
+        {
+          tags.map((t) => (
+            <>
+              <span class="sep">&middot;</span>
+              <a href={`/tags/${t}/`}>{t}</a>
+            </>
+          ))
+        }
+      </p>
+    </header>
+    {
+      showToc && (
+        <nav class="toc" aria-label="文章目录">
+          <div class="toc-inner">
+            <p class="toc-title">目录</p>
+            <ul>
+              {tocHeadings.map((h) => (
+                <li>
+                  <a href={`#${h.slug}`} style={`--depth: ${h.depth - minDepth}`}>
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+      )
+    }
+    <div class="prose">
+      <Content />
+    </div>
   </article>
 </Base>
 
 <style>
-  .meta {
-    font-size: 0.85rem;
-    color: #888;
+  .post-article {
+    position: relative;
   }
 </style>
+
+<script is:inline>
+  // 滚动监听：高亮当前章节对应的目录项
+  (function () {
+    var links = document.querySelectorAll('.toc a');
+    if (!links.length) return;
+    var linkById = new Map();
+    links.forEach(function (a) {
+      linkById.set(decodeURIComponent(a.hash.slice(1)), a);
+    });
+    var current = null;
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var link = linkById.get(e.target.id);
+          if (!link) return;
+          if (current) current.classList.remove('active');
+          link.classList.add('active');
+          current = link;
+        });
+      },
+      { rootMargin: '-80px 0px -70% 0px' }
+    );
+    document
+      .querySelectorAll('.prose h1[id], .prose h2[id], .prose h3[id]')
+      .forEach(function (h) {
+        observer.observe(h);
+      });
+  })();
+</script>

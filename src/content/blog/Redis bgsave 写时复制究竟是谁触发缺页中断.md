@@ -4,9 +4,6 @@ tags: 后端
 categories: 后端
 date: 2026-03-09 23:09
 ---
-
-# Redis bgsave 写时复制究竟是谁触发缺页中断
-
 bgsave 通过 fork 子进程配合写时复制（Copy-On-Write）实现全量快照。小林 coding 说"子进程访问副本完成快照"，这是不对的。
 
 ## 写时复制（COW）原理

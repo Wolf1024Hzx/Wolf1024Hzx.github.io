@@ -4,11 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-07-23 23:22:44
 ---
-
-# OpenClash Fake-IP 劫持与 dnsmasq 主机名映射冲突排查记录
-
-**日期：** 2026-07-23
-
 ## 背景
 
 HomeLab 网络架构（详见《HomeLab 配置》《HomeLab 内网 HTTPS 无感访问配置纪录》）：

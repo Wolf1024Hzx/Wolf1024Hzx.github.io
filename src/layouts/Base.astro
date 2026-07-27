@@ -1,10 +1,20 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title?: string;
 }
 
 const { title } = Astro.props;
 const pageTitle = title ? `${title} | 小狼的小窝` : '小狼的小窝';
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { href: '/archives/', label: '归档' },
+  { href: '/tags/', label: '标签' },
+  { href: '/categories/', label: '分类' },
+  { href: '/about/', label: '关于' },
+];
 ---
 
 <!doctype html>
@@ -13,80 +23,68 @@ const pageTitle = title ? `${title} | 小狼的小窝` : '小狼的小窝';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="众所周知，小狼在冬眠时是不会离开他的小窝的" />
+    <link rel="icon" type="image/jpeg" href="/img/avatar.jpg" />
     <title>{pageTitle}</title>
+    <script is:inline>
+      // 首屏渲染前确定主题，避免明暗闪烁
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch (e) {}
+        var theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
   <body>
-    <header>
+    <header class="site-header">
       <nav>
         <a class="site-title" href="/">小狼的小窝</a>
-        <span class="nav-links">
-          <a href="/archives/">归档</a>
-          <a href="/tags/">标签</a>
-          <a href="/categories/">分类</a>
-          <a href="/about/">关于</a>
-        </span>
+        <div class="nav-right">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class:list={['nav-link', { active: pathname.startsWith(item.href) }]}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <button id="theme-toggle" type="button" aria-label="切换深色/浅色模式">
+            <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+          </button>
+        </div>
       </nav>
     </header>
-    <main>
+    <main class="fade-in">
       <slot />
     </main>
-    <footer>
+    <footer class="site-footer">
       <p>&copy; {new Date().getFullYear()} wolf1024hzx &middot; Powered by <a href="https://astro.build">Astro</a></p>
     </footer>
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        btn.addEventListener('click', function () {
+          var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          try { localStorage.setItem('theme', next); } catch (e) {}
+        });
+        // 未手动选择过主题时，跟随系统明暗变化
+        matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+          var stored = null;
+          try { stored = localStorage.getItem('theme'); } catch (err) {}
+          if (!stored) {
+            document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
-
-<style>
-  /* 临时基础样式，仅保证可读性；正式样式待功能完善后重做 */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  body {
-    max-width: 46rem;
-    margin: 0 auto;
-    padding: 0 1rem;
-    font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    line-height: 1.7;
-    color: #222;
-  }
-
-  header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 1rem 0;
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  .site-title {
-    font-weight: 700;
-    font-size: 1.15rem;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .nav-links a {
-    margin-left: 1rem;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  pre {
-    overflow-x: auto;
-    padding: 0.75rem;
-  }
-
-  footer {
-    margin-top: 3rem;
-    padding: 1rem 0;
-    border-top: 1px solid #e5e5e5;
-    font-size: 0.85rem;
-    color: #888;
-  }
-</style>

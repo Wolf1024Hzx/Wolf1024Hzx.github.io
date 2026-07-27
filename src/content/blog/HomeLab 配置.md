@@ -4,9 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-01-31
 ---
-
-# HomeLab 配置
-
 ## 路由器
 
 ### 硬件配置
