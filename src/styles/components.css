@@ -1,0 +1,328 @@
+/* ============================================
+   组件：首页刊头 / 文章列表 / 页头 / 归档 / 胶囊
+   ============================================ */
+
+/* ---------- 首页刊头 ---------- */
+.hero {
+  padding: 3.75rem 0 0;
+  text-align: center;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 0 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+}
+
+.hero-meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+.hero .slogan {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.09em;
+  line-height: 2;
+}
+
+/* 报纸刊头式的粗细双线 */
+.hero-rule {
+  margin-top: 2.6rem;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+  border-bottom: 2px solid var(--text);
+}
+
+/* ---------- 文章列表（首页/归档/标签/分类共用） ---------- */
+.post-list {
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0;
+}
+
+.post-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 0.55rem 0;
+}
+
+.post-list time {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+
+.post-list a {
+  position: relative;
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  padding-bottom: 1px;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: color 0.25s ease, background-size 0.3s ease;
+}
+
+/* hover 时滑出的箭头，绝对定位避免挤压标题换行 */
+.post-list a::after {
+  content: '→';
+  position: absolute;
+  margin-left: 0.35em;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.post-list li:hover a {
+  color: var(--accent);
+  background-size: 100% 1px;
+}
+
+.post-list li:hover a::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.new-badge {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 0.08em 0.42em;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+/* ---------- 页头（归档/标签/分类/关于/文章） ---------- */
+.page-header {
+  padding: 2.75rem 0 1.75rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* 标题下的短饰线 */
+.page-header h1::after,
+.post-header h1::after {
+  content: '';
+  display: block;
+  width: 2.25rem;
+  height: 3px;
+  margin-top: 0.85rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.page-header .page-desc {
+  margin: 0.7rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
+/* ---------- 文章页头 ---------- */
+.post-header {
+  padding: 2.75rem 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.post-meta {
+  margin: 0.85rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.post-meta time {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.post-meta .sep {
+  margin: 0 0.35rem;
+  color: var(--text-faint);
+}
+
+.post-meta a {
+  color: var(--text-soft);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.post-meta a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- 归档 ---------- */
+.archive-year {
+  margin: 2.25rem 0 0.25rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.archive-year .year-count {
+  margin-left: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-faint);
+}
+
+/* ---------- 标签/分类 胶囊 ---------- */
+.pill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.pill-list a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.pill-list a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.pill-list .count {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+/* ---------- 错落入场动效 ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* 刊头三行错落入场 */
+  .hero > * {
+    animation: fade-in 0.55s ease both;
+  }
+
+  .hero > *:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .hero > *:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  /* 列表逐条渐入 */
+  .post-list li {
+    animation: fade-in 0.5s ease both;
+    animation-delay: calc(0.18s + var(--i, 0) * 45ms);
+  }
+}
+
+/* ---------- 小屏适配 ---------- */
+@media (max-width: 640px) {
+  .hero {
+    padding: 2.5rem 0 0;
+  }
+
+  .hero-meta {
+    margin-bottom: 1.2rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero .slogan {
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    line-height: 1.9;
+  }
+
+  .hero-rule {
+    margin-top: 2rem;
+  }
+
+  .post-list {
+    margin-top: 1.75rem;
+  }
+
+  /* 日期不再挤占横向空间，标题独占整行减少折行 */
+  .post-list li {
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.65rem 0;
+  }
+
+  .post-list time {
+    font-size: 0.74rem;
+  }
+
+  .post-list a {
+    font-size: 1.02rem;
+    line-height: 1.55;
+  }
+
+  /* 触屏无 hover，箭头只会造成横向溢出 */
+  .post-list a::after {
+    content: none;
+  }
+
+  .new-badge {
+    align-self: flex-start;
+    margin-top: 0.35rem;
+  }
+
+  .post-header,
+  .page-header {
+    padding-top: 2rem;
+  }
+
+  .post-header h1,
+  .page-header h1 {
+    font-size: 1.55rem;
+  }
+
+  .page-header h1::after,
+  .post-header h1::after {
+    margin-top: 0.7rem;
+  }
+}

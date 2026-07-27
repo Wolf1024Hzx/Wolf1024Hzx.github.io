@@ -1,0 +1,147 @@
+/* ============================================
+   站点外框：头部导航 / 主题切换 / 页脚
+   ============================================ */
+
+/* ---------- 站点头 ---------- */
+.site-header {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem 0;
+}
+
+.site-header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.nav-link {
+  position: relative;
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+/* 下划线滑动生长 */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.nav-link.active {
+  color: var(--accent);
+}
+
+#theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#theme-toggle:hover {
+  background: var(--bg-soft);
+  color: var(--accent);
+}
+
+#theme-toggle .icon-sun { display: none; }
+#theme-toggle .icon-moon { display: block; }
+html[data-theme='dark'] #theme-toggle .icon-sun { display: block; }
+html[data-theme='dark'] #theme-toggle .icon-moon { display: none; }
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+.site-footer p {
+  position: relative;
+  margin: 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* 压在线上的收尾花饰 */
+.site-footer p::before {
+  content: '❧';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 0.9em;
+  background: var(--bg);
+  color: var(--text-faint);
+}
+
+.site-footer a {
+  color: var(--text-soft);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+}
+
+/* ---------- 小屏适配 ---------- */
+@media (max-width: 640px) {
+  .site-header,
+  .site-footer {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .site-header {
+    padding-top: 1.25rem;
+  }
+
+  .nav-right {
+    gap: 0.85rem;
+  }
+}

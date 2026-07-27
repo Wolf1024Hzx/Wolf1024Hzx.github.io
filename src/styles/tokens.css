@@ -1,0 +1,41 @@
+/* ============================================
+   设计令牌：颜色 / 字体 / 纹理，明暗双主题
+   ============================================ */
+
+:root {
+  --content-width: 46rem;
+
+  --font-serif: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Noto Serif SC',
+    Georgia, 'Songti SC', 'SimSun', serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono',
+    Consolas, 'Courier New', monospace;
+
+  --bg: #fbfaf7;
+  --bg-soft: #f4f1ea;
+  --text: #2a2926;
+  --text-soft: #6e6a61;
+  --text-faint: #a8a399;
+  --accent: #c06a35;
+  --accent-deep: #a5572a;
+  --accent-soft: rgba(192, 106, 53, 0.1);
+  --border: #e9e5db;
+  --selection: rgba(192, 106, 53, 0.22);
+  /* 纸张噪点纹理（SVG 内联，零请求） */
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+html[data-theme='dark'] {
+  --bg: #1b1a18;
+  --bg-soft: #262421;
+  --text: #e9e6e0;
+  --text-soft: #a49e94;
+  --text-faint: #6c675e;
+  --accent: #dd9257;
+  --accent-deep: #eda76e;
+  --accent-soft: rgba(221, 146, 87, 0.14);
+  --border: #37342e;
+  --selection: rgba(221, 146, 87, 0.3);
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}

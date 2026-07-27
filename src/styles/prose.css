@@ -1,0 +1,224 @@
+/* ============================================
+   正文排版：markdown 渲染内容与代码块
+   （内容由 markdown 生成，无法加 scoped 属性，必须保持全局）
+   ============================================ */
+
+.prose {
+  padding: 0.5rem 0 1rem;
+}
+
+.prose p {
+  margin: 1.3em 0;
+  line-height: 1.85;
+}
+
+.prose h2 {
+  margin: 2.6em 0 0.9em;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+/* 部分旧文用 H1 作章节标题，控制在标题(1.9rem)与 H2 之间的层级 */
+.prose h1 {
+  margin: 2.4em 0 0.9em;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.prose h3 {
+  margin: 2.1em 0 0.8em;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+.prose h4 {
+  margin: 1.8em 0 0.7em;
+  font-size: 1.02rem;
+}
+
+/* 下划线常驻 1px，hover 生长为 2px */
+.prose a {
+  color: var(--accent);
+  padding-bottom: 1px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: color 0.2s ease, background-size 0.2s ease;
+}
+
+.prose a:hover {
+  color: var(--accent-deep);
+  background-size: 100% 2px;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+  margin: 1.2em 0;
+}
+
+.prose li {
+  margin: 0.4em 0;
+  line-height: 1.8;
+}
+
+.prose li::marker {
+  color: var(--text-faint);
+}
+
+.prose blockquote {
+  margin: 1.6em 0;
+  padding: 0.7em 1.2em;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--bg-soft);
+  color: var(--text-soft);
+}
+
+.prose blockquote p {
+  margin: 0.6em 0;
+}
+
+/* 杂志花饰分隔线 */
+.prose hr {
+  position: relative;
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.8em auto;
+  overflow: visible;
+}
+
+.prose hr::after {
+  content: '❧';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 0.9em;
+  background: var(--bg);
+  color: var(--text-faint);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.8em auto;
+  border-radius: 6px;
+}
+
+.prose .about-avatar {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 0 1px var(--border), 0 0 0 5px var(--bg-soft);
+}
+
+.prose table {
+  width: 100%;
+  margin: 1.6em 0;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.prose th {
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55em 0.75em;
+  border-bottom: 2px solid var(--border);
+}
+
+.prose td {
+  padding: 0.55em 0.75em;
+  border-bottom: 1px solid var(--border);
+}
+
+/* 行内代码 */
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.87em;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.12em 0.38em;
+}
+
+/* 代码块：顶部终端圆点栏以背景层绘制，共 4 层（3 圆点 + 1 顶栏），
+   size/position 列表与各层一一对应，调整时同步修改；
+   background-attachment 默认不随元素内容滚动，横向滚动时圆点保持不动 */
+.prose pre {
+  margin: 1.8em 0;
+  padding: 3.1em 1.2em 1em;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  overflow-x: auto;
+  background-image:
+    radial-gradient(circle, #ec6a5e 3.2px, transparent 4px),
+    radial-gradient(circle, #f4bf4f 3.2px, transparent 4px),
+    radial-gradient(circle, #61c454 3.2px, transparent 4px),
+    linear-gradient(to bottom, var(--bg-soft) calc(100% - 1px), var(--border) calc(100% - 1px));
+  background-size:
+    2.1em 2.1em, 2.1em 2.1em, 2.1em 2.1em,
+    100% 2.1em;
+  background-position:
+    0.55em 0, 1.55em 0, 2.55em 0,
+    0 0;
+  background-repeat: no-repeat;
+}
+
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Shiki 双主题：深色模式下切换 CSS 变量 */
+html[data-theme='dark'] .astro-code,
+html[data-theme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+/* ---------- 小屏适配 ---------- */
+@media (max-width: 640px) {
+  .prose p,
+  .prose li {
+    line-height: 1.8;
+  }
+
+  .prose blockquote {
+    padding: 0.6em 0.9em;
+  }
+
+  .prose pre {
+    padding: 3em 1rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+  }
+
+  .prose table {
+    font-size: 0.86rem;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 0.45em 0.55em;
+  }
+}
