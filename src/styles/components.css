@@ -103,7 +103,8 @@
 
 .new-badge {
   flex-shrink: 0;
-  align-self: center;
+  /* 基线对齐：单行标题时与文字同线，多行标题时贴第一行 */
+  align-self: baseline;
   padding: 0.08em 0.42em;
   border: 1px solid var(--accent);
   border-radius: 4px;
@@ -306,6 +307,7 @@
     content: none;
   }
 
+  /* 纵向布局下徽章独占一行，靠左并略留间距 */
   .new-badge {
     align-self: flex-start;
     margin-top: 0.35rem;
