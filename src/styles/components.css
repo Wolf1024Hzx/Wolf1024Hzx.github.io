@@ -80,39 +80,9 @@
   transition: color 0.25s ease, background-size 0.3s ease;
 }
 
-/* hover 时滑出的箭头，绝对定位避免挤压标题换行 */
-.post-list a::after {
-  content: '→';
-  position: absolute;
-  margin-left: 0.35em;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateX(-5px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
 .post-list li:hover a {
   color: var(--accent);
   background-size: 100% 1px;
-}
-
-.post-list li:hover a::after {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.new-badge {
-  flex-shrink: 0;
-  /* 基线对齐：单行标题时与文字同线，多行标题时贴第一行 */
-  align-self: baseline;
-  padding: 0.08em 0.42em;
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  background: var(--accent-soft);
-  color: var(--accent-deep);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
 }
 
 /* ---------- 页头（归档/标签/分类/关于/文章） ---------- */
@@ -300,17 +270,6 @@
   .post-list a {
     font-size: 1.02rem;
     line-height: 1.55;
-  }
-
-  /* 触屏无 hover，箭头只会造成横向溢出 */
-  .post-list a::after {
-    content: none;
-  }
-
-  /* 纵向布局下徽章独占一行，靠左并略留间距 */
-  .new-badge {
-    align-self: flex-start;
-    margin-top: 0.35rem;
   }
 
   .post-header,

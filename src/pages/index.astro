@@ -22,7 +22,6 @@ const oldestYear = posts[posts.length - 1]?.data.date.getFullYear();
         <li style={`--i: ${Math.min(index, 12)}`}>
           <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
           <a href={`/posts/${post.id}/`}>{post.data.title}</a>
-          {index === 0 && <span class="new-badge">NEW</span>}
         </li>
       ))
     }
