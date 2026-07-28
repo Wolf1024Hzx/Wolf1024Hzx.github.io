@@ -16,7 +16,8 @@ body {
   margin: 0;
   overflow-x: clip;
   background: var(--bg);
-  background-image: var(--noise);
+  /* 细颗粒在上、低频斑驳在下，两层叠加构成纸感 */
+  background-image: var(--noise), var(--mottle);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 16.5px;
