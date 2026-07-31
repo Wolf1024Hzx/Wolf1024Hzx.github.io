@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PillList from '../../components/PillList.astro';
 import { getSortedPosts, groupBy } from '../../lib/posts';
 
 const categories = groupBy(await getSortedPosts(), 'categories');
@@ -10,16 +11,5 @@ const categories = groupBy(await getSortedPosts(), 'categories');
     <h1>分类</h1>
     <p class="page-desc">共 {categories.size} 个</p>
   </header>
-  <ul class="pill-list">
-    {
-      [...categories.entries()].map(([category, posts]) => (
-        <li>
-          <a href={`/categories/${category}/`}>
-            {category}
-            <span class="count">{posts.length}</span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <PillList entries={[...categories.entries()]} base="/categories/" />
 </Base>

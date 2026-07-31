@@ -31,14 +31,31 @@ const navItems = [
     <link rel="icon" type="image/jpeg" href="/img/avatar.jpg" />
     <title>{pageTitle}</title>
     <script is:inline>
+      // 主题读写助手，头尾两段脚本共用，避免逻辑漂移
+      window.__theme = {
+        read: function () {
+          try {
+            return localStorage.getItem('theme');
+          } catch (e) {
+            return null;
+          }
+        },
+        write: function (v) {
+          try {
+            localStorage.setItem('theme', v);
+          } catch (e) {}
+        },
+        apply: function (v) {
+          document.documentElement.dataset.theme = v;
+        },
+      };
       // 首屏渲染前确定主题，避免明暗闪烁
       (function () {
-        var stored = null;
-        try { stored = localStorage.getItem('theme'); } catch (e) {}
-        var theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.dataset.theme = theme;
+        var theme = window.__theme.read() || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        window.__theme.apply(theme);
       })();
     </script>
+    <slot name="head" />
   </head>
   <body>
     <header class="site-header">
@@ -75,18 +92,16 @@ const navItems = [
     </footer>
     <script is:inline>
       (function () {
-        var btn = document.getElementById('theme-toggle');
-        btn.addEventListener('click', function () {
+        var theme = window.__theme;
+        document.getElementById('theme-toggle').addEventListener('click', function () {
           var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-          document.documentElement.dataset.theme = next;
-          try { localStorage.setItem('theme', next); } catch (e) {}
+          theme.apply(next);
+          theme.write(next);
         });
         // 未手动选择过主题时，跟随系统明暗变化
         matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-          var stored = null;
-          try { stored = localStorage.getItem('theme'); } catch (err) {}
-          if (!stored) {
-            document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
+          if (!theme.read()) {
+            theme.apply(e.matches ? 'dark' : 'light');
           }
         });
       })();

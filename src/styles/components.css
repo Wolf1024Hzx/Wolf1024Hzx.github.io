@@ -1,5 +1,6 @@
 /* ============================================
-   组件：首页刊头 / 文章列表 / 页头 / 归档 / 胶囊
+   组件：首页刊头 / 文章列表 / 置顶分区 / 页头 /
+        归档 / 胶囊 / 站内搜索
    ============================================ */
 
 /* ---------- 首页刊头 ---------- */
@@ -85,19 +86,38 @@
   background-size: 100% 1px;
 }
 
-/* 置顶文章角标 */
-.post-list .pin-badge {
-  flex-shrink: 0;
-  /* 抵消一部分 flex gap，让角标贴近标题而不是日期 */
-  margin-right: -0.65rem;
-  padding: 0.02rem 0.5rem;
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  background: var(--accent-soft);
+/* ---------- 首页置顶分区 ---------- */
+/* 分区与刊头线拉开距离，等宽体小标签 + 右侧延伸细线作为分区标题 */
+.pinned-section {
+  margin-top: 2.75rem;
+}
+
+.pinned-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+}
+
+.pinned-label::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--border);
+}
+
+/* 标签与列表抱团 */
+.pinned-section .post-list {
+  margin-top: 0.9rem;
+}
+
+/* 分区底部只用 1px 细线收束，全页唯一的粗双轨线留给刊头 */
+.pinned-rule {
+  margin-top: 1.2rem;
+  border-top: 1px solid var(--border);
 }
 
 /* ---------- 页头（归档/标签/分类/关于/文章） ---------- */
@@ -304,11 +324,15 @@
     margin-top: 1.75rem;
   }
 
-  /* 日期不再挤占横向空间，标题独占整行减少折行 */
+  /* 日期一行、标题独占整行，减少折行 */
   .post-list li {
-    flex-direction: column;
-    gap: 0.1rem;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.7rem;
     padding: 0.65rem 0;
+  }
+
+  .post-list li a {
+    flex-basis: 100%;
   }
 
   .post-list time {

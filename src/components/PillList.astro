@@ -1,0 +1,23 @@
+---
+interface Props {
+  /** [名称, 文章列表] 条目，通常来自 groupBy 的 Map */
+  entries: [string, unknown[]][];
+  /** 详情页路径前缀，如 '/tags/' 或 '/categories/' */
+  base: string;
+}
+
+const { entries, base } = Astro.props;
+---
+
+<ul class="pill-list">
+  {
+    entries.map(([name, posts]) => (
+      <li>
+        <a href={`${base}${name}/`}>
+          {name}
+          <span class="count">{posts.length}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

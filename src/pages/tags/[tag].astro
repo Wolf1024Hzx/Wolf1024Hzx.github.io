@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getSortedPosts, groupBy, formatDate } from '../../lib/posts';
+import PostList from '../../components/PostList.astro';
+import { getSortedPosts, groupBy } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const tags = groupBy(await getSortedPosts(), 'tags');
@@ -19,14 +20,5 @@ const { posts } = Astro.props;
     <h1>标签：{tag}</h1>
     <p class="page-desc">共 {posts.length} 篇</p>
   </header>
-  <ul class="post-list">
-    {
-      posts.map((post: (typeof posts)[number]) => (
-        <li>
-          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-          <a href={`/posts/${post.id}/`}>{post.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <PostList posts={posts} />
 </Base>

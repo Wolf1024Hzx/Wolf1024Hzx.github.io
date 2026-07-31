@@ -3,10 +3,12 @@ import Base from '../layouts/Base.astro';
 import { getSortedPosts, formatDate } from '../lib/posts';
 
 const posts = await getSortedPosts();
-// 置顶文章排在最前，其余按日期倒序（getSortedPosts 已保证有序，直接两段拼接即可）
+// 置顶文章单独成一个分区，其余按日期倒序（getSortedPosts 已保证有序）
 const pinnedPosts = posts.filter((p) => p.data.pinned);
-const orderedPosts = [...pinnedPosts, ...posts.filter((p) => !p.data.pinned)];
-const oldestYear = posts[posts.length - 1]?.data.date.getFullYear();
+const restPosts = posts.filter((p) => !p.data.pinned);
+const oldestYear = posts[posts.length - 1]?.data.date.getUTCFullYear();
+// 列表入场动画错峰上限：前 12 条逐条延迟，之后齐播（--i 供 components.css 的 animation-delay 使用）
+const STAGGER_CAP = 12;
 ---
 
 <Base>
@@ -19,12 +21,27 @@ const oldestYear = posts[posts.length - 1]?.data.date.getFullYear();
     <p class="slogan">但屈指西风几时来，<br />又不道流年暗中偷换</p>
     <div class="hero-rule" aria-hidden="true"></div>
   </section>
+  {
+    pinnedPosts.length > 0 && (
+      <section class="pinned-section">
+        <p class="pinned-label">置顶</p>
+        <ul class="post-list">
+          {pinnedPosts.map((post, index) => (
+            <li style={`--i: ${Math.min(index, STAGGER_CAP)}`}>
+              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+        <div class="pinned-rule" aria-hidden="true" />
+      </section>
+    )
+  }
   <ul class="post-list">
     {
-      orderedPosts.map((post, index) => (
-        <li style={`--i: ${Math.min(index, 12)}`}>
+      restPosts.map((post, index) => (
+        <li style={`--i: ${Math.min(pinnedPosts.length + index, STAGGER_CAP)}`}>
           <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-          {post.data.pinned && <span class="pin-badge">置顶</span>}
           <a href={`/posts/${post.id}/`}>{post.data.title}</a>
         </li>
       ))
