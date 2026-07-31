@@ -110,6 +110,17 @@
   border-radius: 6px;
 }
 
+/* 架构图明暗双版本（文件名带 -light/-dark 后缀），跟随主题切换 */
+.prose img[src*='-dark'] {
+  display: none;
+}
+html[data-theme='dark'] .prose img[src*='-light'] {
+  display: none;
+}
+html[data-theme='dark'] .prose img[src*='-dark'] {
+  display: block;
+}
+
 .prose .about-avatar {
   width: 7rem;
   height: 7rem;

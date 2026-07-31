@@ -54,6 +54,14 @@ PaperMind 上线时，公网链路长这样：浏览器 → 云服务器 nginx�
 
 ## 现状
 
+整个 Ubuntu VM 上的服务全景——Docker 服务群（NPM、Jellyfin、qBittorrent 等）与 k3s 集群并存，统一从 frp 隧道出公网：
+
+![Ubuntu VM 服务全景（浅色）](./service-overview-light.png)
+
+![Ubuntu VM 服务全景（深色）](./service-overview-dark.png)
+
+其中公网链路与 k3s 内部分流的细节：
+
 ![Homelab k3s 多项目平台架构](./architecture.png)
 
 浏览器无论从哪个域名进来，都在云服务器 nginx 终止 TLS 后进同一条 frp 隧道；Traefik 按 Host 和路径分流到两个项目的 namespace；两个后端共用 `database` namespace 的 PostgreSQL 与 Redis（PV 均为 Retain）；外部依赖（PaperMind 的 LLM API）从集群直连出去。

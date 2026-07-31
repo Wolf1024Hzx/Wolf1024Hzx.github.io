@@ -4,7 +4,6 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-03-20
 ---
----
 
 ## 异常现象描述
 
@@ -71,6 +70,12 @@ date: 2026-03-20
    ├── 1. DNS 请求 ──> [OpenWrt] ──> [小米路由器] ──> 返回 真实公网 IP (或 NPM 内网 IP)
    └── 2. 业务流量 ──> [小米路由器 (网关)] ──> 正常直连公网 (或内网穿透) ✅
 ```
+
+修复后的完整内网访问与 DNS 分流链路：
+
+![内网访问与 DNS 分流（浅色）](./dns-split-light.png)
+
+![内网访问与 DNS 分流（深色）](./dns-split-dark.png)
 
 ---
 

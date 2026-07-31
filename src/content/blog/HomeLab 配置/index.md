@@ -4,6 +4,12 @@ tags: HomeLab
 categories: HomeLab
 date: 2026-01-31
 ---
+## 物理与网络拓扑
+
+![HomeLab 物理与网络拓扑（浅色）](./homelab-topology-light.png)
+
+![HomeLab 物理与网络拓扑（深色）](./homelab-topology-dark.png)
+
 ## 路由器
 
 ### 硬件配置
