@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -33,22 +33,34 @@ jobs:
             echo "command=npm" >> "$GITHUB_OUTPUT"
           fi
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.command }} install
+        # npm 用 ci（严格按 lockfile 安装，CI 标准实践）；pnpm/yarn 走原样 install。
+        # fetch 超时/重试：npm 无请求级超时，遇到不可达的 registry 会无限挂起
+        # （npm/cli#7657 等），显式配置让挂死的请求快速失败并重试。
+        run: |
+          if [ "${{ steps.detect-package-manager.outputs.manager }}" = "npm" ]; then
+            npm config set fetch-retries 5
+            npm config set fetch-retry-mintimeout 15000
+            npm config set fetch-retry-maxtimeout 120000
+            npm config set fetch-timeout 300000
+            npm ci
+          else
+            ${{ steps.detect-package-manager.outputs.command }} install
+          fi
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.command }} run build \
             --if-present \
             -- --site "${{ steps.pages.outputs.origin }}"
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           # Astro 构建输出目录，模板默认为 Jekyll 的 _site
           path: dist
@@ -62,4 +74,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
