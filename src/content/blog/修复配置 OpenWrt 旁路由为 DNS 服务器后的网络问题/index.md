@@ -3,6 +3,7 @@ title: 修复配置 OpenWrt 旁路由为 DNS 服务器后的网络问题
 tags: HomeLab
 categories: HomeLab
 date: 2026-03-20
+pinned: true
 ---
 
 ## 异常现象描述

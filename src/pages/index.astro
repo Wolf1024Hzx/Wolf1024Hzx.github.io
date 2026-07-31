@@ -3,6 +3,9 @@ import Base from '../layouts/Base.astro';
 import { getSortedPosts, formatDate } from '../lib/posts';
 
 const posts = await getSortedPosts();
+// 置顶文章排在最前，其余按日期倒序（getSortedPosts 已保证有序，直接两段拼接即可）
+const pinnedPosts = posts.filter((p) => p.data.pinned);
+const orderedPosts = [...pinnedPosts, ...posts.filter((p) => !p.data.pinned)];
 const oldestYear = posts[posts.length - 1]?.data.date.getFullYear();
 ---
 
@@ -18,9 +21,10 @@ const oldestYear = posts[posts.length - 1]?.data.date.getFullYear();
   </section>
   <ul class="post-list">
     {
-      posts.map((post, index) => (
+      orderedPosts.map((post, index) => (
         <li style={`--i: ${Math.min(index, 12)}`}>
           <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+          {post.data.pinned && <span class="pin-badge">置顶</span>}
           <a href={`/posts/${post.id}/`}>{post.data.title}</a>
         </li>
       ))

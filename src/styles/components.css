@@ -85,6 +85,21 @@
   background-size: 100% 1px;
 }
 
+/* 置顶文章角标 */
+.post-list .pin-badge {
+  flex-shrink: 0;
+  /* 抵消一部分 flex gap，让角标贴近标题而不是日期 */
+  margin-right: -0.65rem;
+  padding: 0.02rem 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
 /* ---------- 页头（归档/标签/分类/关于/文章） ---------- */
 .page-header {
   padding: 2.75rem 0 1.75rem;
@@ -206,6 +221,39 @@
 .pill-list .count {
   font-size: 0.78rem;
   color: var(--text-faint);
+}
+
+/* ---------- 站内搜索（Pagefind UI 主题适配） ---------- */
+/* 变量引用站点令牌，明暗主题随之自动切换 */
+:root {
+  --pagefind-ui-scale: 0.85;
+  --pagefind-ui-primary: var(--accent);
+  --pagefind-ui-text: var(--text);
+  --pagefind-ui-background: var(--bg);
+  --pagefind-ui-border: var(--border);
+  --pagefind-ui-tag: var(--bg-soft);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 6px;
+  --pagefind-ui-font: var(--font-sans);
+}
+
+/* 结果标题与文章列表保持一致的衬线风格 */
+.pagefind-ui__result-title,
+.pagefind-ui__result-title .pagefind-ui__result-link {
+  font-family: var(--font-serif);
+}
+
+/* 索引未构建时（如 dev 模式）的提示 */
+.search-hint {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
+.search-hint code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
 }
 
 /* ---------- 错落入场动效 ---------- */

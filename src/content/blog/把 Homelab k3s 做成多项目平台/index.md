@@ -3,6 +3,7 @@ title: "把 Homelab k3s 做成多项目平台"
 tags: HomeLab
 categories: HomeLab
 date: 2026-07-30 12:56:00
+pinned: true
 ---
 
 **环境：** HomeLab 单节点 k3s v1.36.2（PVE 上的 Ubuntu VM）+ 一台阿里云 ECS 做公网入口 + frp 内网穿透。

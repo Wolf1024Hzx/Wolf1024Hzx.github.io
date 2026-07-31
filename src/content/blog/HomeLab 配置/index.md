@@ -3,6 +3,7 @@ title: HomeLab 配置
 tags: HomeLab
 categories: HomeLab
 date: 2026-01-31
+pinned: true
 ---
 ## 物理与网络拓扑
 
