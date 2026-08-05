@@ -49,5 +49,3 @@ date: 2026-04-20 12:52
    iface eno1 inet manual
        post-up /sbin/ethtool -K eno1 tso off gso off gro off
    ```
-
----
