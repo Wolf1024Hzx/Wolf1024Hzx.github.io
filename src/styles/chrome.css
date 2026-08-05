@@ -102,23 +102,35 @@ html[data-theme='dark'] #theme-toggle .icon-moon { display: none; }
   position: relative;
   margin: 0;
   padding-top: 1.4rem;
-  border-top: 1px solid var(--border);
+  /* 顶部分隔线在爪印处直接断开而非色块遮盖，纸张纹理可透出 */
+  background-image: linear-gradient(
+    to right,
+    var(--border) calc(50% - 1.1rem),
+    transparent calc(50% - 1.1rem),
+    transparent calc(50% + 1.1rem),
+    var(--border) calc(50% + 1.1rem)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: top left;
   font-size: 0.82rem;
   color: var(--text-faint);
   letter-spacing: 0.02em;
   text-align: center;
 }
 
-/* 压在线上的收尾花饰 */
+/* 压在线上的收尾爪印 */
 .site-footer p::before {
-  content: '❧';
+  content: '';
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 0 0.9em;
-  background: var(--bg);
-  color: var(--text-faint);
+  width: 0.95rem;
+  height: 0.95rem;
+  background: var(--text-faint);
+  -webkit-mask: url('/img/paw.svg') center / contain no-repeat;
+  mask: url('/img/paw.svg') center / contain no-repeat;
 }
 
 .site-footer a {

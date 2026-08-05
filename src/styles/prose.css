@@ -80,13 +80,20 @@
   margin: 0.6em 0;
 }
 
-/* 杂志花饰分隔线 */
+/* 杂志花饰分隔线：横线在花饰处直接断开而非色块遮盖，纸张纹理可透出 */
 .prose hr {
   position: relative;
   border: none;
-  border-top: 1px solid var(--border);
+  height: 1px;
   margin: 2.8em auto;
   overflow: visible;
+  background: linear-gradient(
+    to right,
+    var(--border) calc(50% - 1.1rem),
+    transparent calc(50% - 1.1rem),
+    transparent calc(50% + 1.1rem),
+    var(--border) calc(50% + 1.1rem)
+  );
 }
 
 .prose hr::after {
@@ -95,8 +102,6 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 0 0.9em;
-  background: var(--bg);
   color: var(--text-faint);
   font-size: 1rem;
   line-height: 1;
